@@ -668,7 +668,7 @@ def _merge_keywords_with_lhs(keywords, lhs_args):
     final_keywords.update(keywords)
     return final_keywords
 
-def _gather_returns(func_name, lhs, algm_obj, ignore_regex=[]):
+def _gather_returns(func_name, lhs, algm_obj, ignore_regex=[], output_workspaces={}):
     """Gather the return values and ensure they are in the
        correct order as defined by the output properties and
        return them as a tuple. If their is a single return
@@ -705,7 +705,7 @@ def _gather_returns(func_name, lhs, algm_obj, ignore_regex=[]):
         if _is_workspace_property(prop):
             value_str = prop.valueAsStr
             try:
-                retvals.append(_api.AnalysisDataService[value_str])
+                retvals.append(_gather_returns_internal_get_workspace_from_ADS(value_str, output_workspaces))
             except KeyError:
                 if not prop.isOptional():
                     raise RuntimeError("Internal error. Output workspace property '%s' on algorithm '%s' has not been stored correctly."
@@ -717,6 +717,7 @@ def _gather_returns(func_name, lhs, algm_obj, ignore_regex=[]):
                 raise RuntimeError('Internal error. Unknown property type encountered. "%s" on algorithm "%s" is not understood by '
                        'Python. Please contact development team' % (name, algm_obj.name()))
 
+    _gather_returns_cleanup_workspaces(output_workspaces)
 
     nvals = len(retvals)
     nlhs = lhs[0]
@@ -782,6 +783,19 @@ def set_properties(alg_object, *args, **kwargs):
         else:
             alg_object.setProperty(key, value)
 
+def _create_algorithm_function_post_process_lhs_info(lhs):
+    return lhs
+
+def _create_algorithm_function_get_initial_workspaces(args, kwargs):
+    return {}
+
+def _gather_returns_internal_get_workspace_from_ADS(value_str, output_workspaces):
+    # output_workspaces is irrelevant for the default implementation.
+    return _api.AnalysisDataService[value_str]
+
+def _gather_returns_cleanup_workspaces(workspaces):
+    pass
+
 def _create_algorithm_function(algorithm, version, _algm_object):
     """
         Create a function that will set up and execute an algorithm.
@@ -813,7 +827,10 @@ def _create_algorithm_function(algorithm, version, _algm_object):
         except KeyError:
             frame = None
 
+        output_workspaces = _create_algorithm_function_get_initial_workspaces(args, kwargs)
+
         lhs = _kernel.funcreturns.lhs_info(frame=frame)
+        lhs = _create_algorithm_function_post_process_lhs_info(lhs)
         lhs_args = _get_args_from_lhs(lhs, algm)
         final_keywords = _merge_keywords_with_lhs(kwargs, lhs_args)
 
@@ -826,7 +843,7 @@ def _create_algorithm_function(algorithm, version, _algm_object):
                 _check_mandatory_args(algorithm, _algm_object, e, *args, **kwargs)
             else:
                 raise
-        return _gather_returns(algorithm, lhs, algm)
+        return _gather_returns(algorithm, lhs, algm, output_workspaces=output_workspaces)
 
 
     algorithm_wrapper.__name__ = algorithm
