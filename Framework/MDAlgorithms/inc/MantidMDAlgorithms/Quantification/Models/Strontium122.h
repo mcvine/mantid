@@ -46,7 +46,7 @@ private:
   ModelType modelType() const { return Broad; }
   /// Calculates the intensity for the model for the current parameters.
   double scatteringIntensity(const API::ExperimentInfo &exptDescr,
-                             const std::vector<double> &point) const;
+                             const std::vector<double> &qlab) const;
 
   /// Twin type attribute
   int m_twinType;

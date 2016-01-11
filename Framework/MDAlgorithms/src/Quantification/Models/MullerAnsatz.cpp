@@ -139,9 +139,10 @@ MullerAnsatz::scatteringIntensity(const API::ExperimentInfo &exptSetup,
       getCurrentParameterValue(AnsatzParameters::J_coupling);
 
   double weight, qchain;
-  double qh, qk, ql, arlu1, arlu2, arlu3;
-  ForegroundModel::convertToHKL(exptSetup, qx, qy, qz, qh, qk, ql, arlu1, arlu2,
-                                arlu3);
+  double qh, qk, ql;
+  toHKL(exptSetup, qx, qy, qz, qh, qk, ql);
+  double arlu1, arlu2, arlu3;
+  arlu(exptSetup, arlu1, arlu2, arlu3);
 
   //	Orientation of the chain:
   switch (m_ChainDirection) {

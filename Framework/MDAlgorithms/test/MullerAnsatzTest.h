@@ -58,8 +58,7 @@ public:
     Cu2Default.setParameter("Amplitude", 0.67);
     Cu2Default.setParameter("J_coupling", 2.1);
     double valueWithDefault = calculateTestModelWeight(Cu2Default);
-    TS_ASSERT_DELTA(0.016787062635810316, valueWithDefault,
-                    1e-10); // Check the absolute value is correct
+    TS_ASSERT_DELTA(0.0142427633, valueWithDefault, 1e-10);
 
     MullerAnsatz Cu2Res;
     Cu2Res.initialize();
@@ -74,7 +73,6 @@ public:
     double valueWithAttrSet = calculateTestModelWeight(Cu2Res);
 
     TS_ASSERT_DELTA(valueWithDefault, valueWithAttrSet, 1e-10);
-    // TS_ASSERT_DELTA(valueWithDefault, valueWithAttrSet, 10);
   }
 
 private:
@@ -83,7 +81,7 @@ private:
     FakeFGModelFitFunction fakeFitFunction(
         model); // Use fit function to access current fit values
 
-    const double qx(7.7), qy(6.5), qz(4.3), deltaE(3.3);
+    const double qx(3.9), qy(7.7), qz(6.8), deltaE(3.3);
     const double qOmega[4] = {qx, qy, qz, deltaE};
     Mantid::API::ExperimentInfo experimentDescr;
     auto lattice = new Mantid::Geometry::OrientedLattice(5.51, 12.298, 5.57);
@@ -96,8 +94,6 @@ private:
     experimentDescr.mutableRun().addProperty("temperature_log", 6.0);
 
     double weight(-1.0);
-    // const ForegroundModel & MulFunction = model; // scatteringIntensity is
-    // private concrete model
     TS_ASSERT_THROWS_NOTHING(
         weight = model.scatteringIntensity(
             experimentDescr, std::vector<double>(qOmega, qOmega + 4)));

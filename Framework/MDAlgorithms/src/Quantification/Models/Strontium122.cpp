@@ -9,20 +9,15 @@ DECLARE_FOREGROUNDMODEL(Strontium122)
 
 using Kernel::Math::BoseEinsteinDistribution;
 
-namespace // anonymous
-    {
+namespace {
 /// Enumerate parameter positions
 enum { Seff = 0, J1a = 1, J1b = 2, J2 = 3, SJc = 4, GammaSlope = 5 };
 
-/// Number of parameters
-const unsigned int NPARAMS = 6;
 /// Parameter names, same order as above
-const char *PAR_NAMES[NPARAMS] = {"Seff", "J1a", "J1b",
-                                  "J2",   "SJc", "GammaSlope"};
-/// N attrs
-const unsigned int NATTS = 2;
+std::array<std::string, 6> PAR_NAMES = {"Seff", "J1a", "J1b",
+                                        "J2",   "SJc", "GammaSlope"};
 /// Attribute names
-const char *ATTR_NAMES[NATTS] = {"MultEps", "TwinType"};
+std::array<std::string, 2> ATTR_NAMES = {"MultEps", "TwinType"};
 }
 Strontium122::Strontium122() : m_twinType(1), m_multEps(true) {}
 
@@ -34,12 +29,12 @@ void Strontium122::init() {
   setFormFactorIon("Fe2");
 
   // Declare parameters that participate in fitting
-  for (unsigned int i = 0; i < NPARAMS; ++i) {
+  for (unsigned int i = 0; i < PAR_NAMES.size(); ++i) {
     declareParameter(PAR_NAMES[i], 0.0);
   }
 
   // Declare fixed attributes
-  for (unsigned int i = 0; i < NATTS; ++i) {
+  for (unsigned int i = 0; i < ATTR_NAMES.size(); ++i) {
     declareAttribute(ATTR_NAMES[i], API::IFunction::Attribute(1));
   }
 }
@@ -62,24 +57,24 @@ void Strontium122::setAttribute(const std::string &name,
 /**
  * Calculates the scattering intensity
  * @param exptSetup :: Details of the current experiment
- * @param point :: The axis values for the current point in Q-W space: Qx, Qy,
- * Qz, DeltaE. These are in
- * crystal cartesian coordinates
+ * @param qlab :: Array of points assumed to be in 4D Q-deltaE space in the 
+ * spectrometer frame
  * @return The weight contributing from this point
  */
 double
 Strontium122::scatteringIntensity(const API::ExperimentInfo &exptSetup,
-                                  const std::vector<double> &point) const {
-  const double qx(point[0]), qy(point[1]), qz(point[2]), eps(point[3]);
-  const double qsqr = qx * qx + qy * qy + qz * qz;
+                                  const std::vector<double> &qlab) const {
+  const double qx(qlab[0]), qy(qlab[1]), qz(qlab[2]), eps(qlab[3]);
   const double epssqr = eps * eps;
 
-  double qh, qk, ql, arlu1, arlu2, arlu3;
-  ForegroundModel::convertToHKL(exptSetup, qx, qy, qz, qh, qk, ql, arlu1, arlu2,
-                                arlu3);
+  double qh, qk, ql;
+  toHKL(exptSetup, qx, qy, qz, qh, qk, ql);
+  double arlu1, arlu2, arlu3;
+  arlu(exptSetup, arlu1, arlu2, arlu3);
 
   const double tempInK = exptSetup.getLogAsSingleValue("temperature_log");
   const double boseFactor = BoseEinsteinDistribution::np1Eps(eps, tempInK);
+  const double qsqr = qx * qx + qy * qy + qz * qz;
   const double magFormFactorSqr = std::pow(formFactor(qsqr), 2);
 
   const double s_eff = getCurrentParameterValue(Seff);

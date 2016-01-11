@@ -12,6 +12,8 @@ namespace {
 const int FORM_FACTOR_TABLE_LENGTH = 500;
 /// Name of the form factor attribute
 const char *FORM_FACTOR_ION = "FormFactorIon";
+// 2pi
+constexpr double TWO_PI = 2. * M_PI;
 }
 
 /**
@@ -157,66 +159,45 @@ double ForegroundModel::formFactor(const double qsqr) const {
 }
 
 //-------------------------------------------------------------------------
-// Private members
+// Protected members
 //-------------------------------------------------------------------------
 
 /**
- * Add attributes common to all models
+ *
+ * @param exptSetup A reference to the experiment info
+ * @param qx Qx in the lab frame
+ * @param qy Qy in the lab frame
+ * @param qz Qz in the lab frame
+ * @param qh H in rlu
+ * @param qk K in rlu
+ * @param ql L in rlu
  */
-void ForegroundModel::addAttributes() {
-  // Ion type string for form factor. "0" = off
-  declareAttribute(FORM_FACTOR_ION, API::IFunction::Attribute("0"));
+void ForegroundModel::toHKL(const API::ExperimentInfo &exptSetup,
+                            const double &qx, const double &qy,
+                            const double &qz, double &qh, double &qk,
+                            double &ql) const {
+  const auto &lattice = exptSetup.sample().getOrientedLattice();
+  const auto &gr = exptSetup.run().getGoniometerMatrix();
+  const auto &ub = lattice.getUB();
+  auto toHKL = gr * ub * TWO_PI;
+  toHKL.Invert();
+
+  qh = toHKL[0][0] * qx + toHKL[0][1] * qy + toHKL[0][2] * qz;
+  qk = toHKL[1][0] * qx + toHKL[1][1] * qy + toHKL[1][2] * qz;
+  ql = toHKL[2][0] * qx + toHKL[2][1] * qy + toHKL[2][2] * qz;
 }
 
-const double TWO_PI = 2. * M_PI;
-void ForegroundModel::convertToHKL(const API::ExperimentInfo &exptSetup,
-                                   const double &qx, const double &qy,
-                                   const double &qz, double &qh, double &qk,
-                                   double &ql, double &arlu1, double &arlu2,
-                                   double &arlu3) {
-  // Transform the HKL only requires B matrix & goniometer (R) as ConvertToMD
-  // should have already
-  // handled addition of U matrix
-  // qhkl = (1/2pi)(RB)^-1(qxyz)
-  const Geometry::OrientedLattice &lattice =
-      exptSetup.sample().getOrientedLattice();
-  const Kernel::DblMatrix &gr = exptSetup.run().getGoniometerMatrix();
-  const Kernel::DblMatrix &bmat = lattice.getB();
+/**
+ *
+ * @param exptSetup A reference to the experiment info
+ * @param arlu1 Set to a scaled to rlu [Out]
+ * @param arlu2 Set to b scaled to rlu [Out]
+ * @param arlu3 Set to c scaled to rlu [Out]
+ */
+void ForegroundModel::arlu(const API::ExperimentInfo &exptSetup, double &arlu1,
+                           double &arlu2, double &arlu3) const {
+  const auto &lattice = exptSetup.sample().getOrientedLattice();
 
-  // Avoid doing inversion with Matrix class as it forces memory allocations
-  // M^-1 = (1/|M|)*M^T
-  double rb00(0.0), rb01(0.0), rb02(0.0), rb10(0.0), rb11(0.0), rb12(0.0),
-      rb20(0.0), rb21(0.0), rb22(0.0);
-  for (unsigned int i = 0; i < 3; ++i) {
-    rb00 += gr[0][i] * bmat[i][0];
-    rb01 += gr[0][i] * bmat[i][1];
-    rb02 += gr[0][i] * bmat[i][2];
-
-    rb10 += gr[1][i] * bmat[i][0];
-    rb11 += gr[1][i] * bmat[i][1];
-    rb12 += gr[1][i] * bmat[i][2];
-
-    rb20 += gr[2][i] * bmat[i][0];
-    rb21 += gr[2][i] * bmat[i][1];
-    rb22 += gr[2][i] * bmat[i][2];
-  }
-  // 2pi*determinant. The tobyFit definition of rl vector has extra 2pi factor
-  // in it
-  const double twoPiDet = TWO_PI * (rb00 * (rb11 * rb22 - rb12 * rb21) -
-                                    rb01 * (rb10 * rb22 - rb12 * rb20) +
-                                    rb02 * (rb10 * rb21 - rb11 * rb20));
-
-  qh = ((rb11 * rb22 - rb12 * rb21) * qx + (rb02 * rb21 - rb01 * rb22) * qy +
-        (rb01 * rb12 - rb02 * rb11) * qz) /
-       twoPiDet;
-  qk = ((rb12 * rb20 - rb10 * rb22) * qx + (rb00 * rb22 - rb02 * rb20) * qy +
-        (rb02 * rb10 - rb00 * rb12) * qz) /
-       twoPiDet;
-  ql = ((rb10 * rb21 - rb11 * rb20) * qx + (rb01 * rb20 - rb00 * rb21) * qy +
-        (rb00 * rb11 - rb01 * rb10) * qz) /
-       twoPiDet;
-
-  // Lattice parameters
   double ca1 = std::cos(lattice.beta1());
   double ca2 = std::cos(lattice.beta2());
   double ca3 = std::cos(lattice.beta3());
@@ -226,10 +207,21 @@ void ForegroundModel::convertToHKL(const API::ExperimentInfo &exptSetup,
 
   const double factor = std::sqrt(1.0 + 2.0 * (ca1 * ca2 * ca3) -
                                   (ca1 * ca1 + ca2 * ca2 + ca3 * ca3));
-  arlu1 =
-      (TWO_PI / lattice.a()) * (sa1 / factor); // Lattice parameters in r.l.u
+  arlu1 = (TWO_PI / lattice.a()) * (sa1 / factor);
   arlu2 = (TWO_PI / lattice.b()) * (sa2 / factor);
   arlu3 = (TWO_PI / lattice.c()) * (sa3 / factor);
+}
+
+//-------------------------------------------------------------------------
+// Private members
+//-------------------------------------------------------------------------
+
+/**
+ * Add attributes common to all models
+ */
+void ForegroundModel::addAttributes() {
+  // Ion type string for form factor. "0" = off
+  declareAttribute(FORM_FACTOR_ION, API::IFunction::Attribute("0"));
 }
 }
 }

@@ -88,7 +88,9 @@ private:
   /// Cache some frequently used attributes
   void setAttribute(const std::string &name,
                     const API::IFunction::Attribute &value);
-
+  /// Compute the value of S(Q) for this point
+  double sqw(const API::ExperimentInfo &experiment,
+             std::vector<double> &qLab) const;
   /// Calculate resolution coefficients
   void calculateResolutionCoefficients(const CachedExperimentInfo &observation,
                                        const QOmegaPoint &eventPoint) const;

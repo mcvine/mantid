@@ -99,12 +99,13 @@ protected:
   /// Returns the form factor for the given q^2 value
   double formFactor(const double qsqr) const;
 
-  /// helper function used for fast conversion from qx,qy,qz coordinate system
-  /// into hkl coordinate system
-  static void convertToHKL(const API::ExperimentInfo &exptSetup,
-                           const double &qx, const double &qy, const double &qz,
-                           double &qh, double &qk, double &ql, double &arlu1,
-                           double &arlu2, double &arlu3);
+  /// Convert from lab to HKL coordinates
+  void toHKL(const API::ExperimentInfo &exptSetup, const double &qx,
+             const double &qy, const double &qz, double &qh, double &qk,
+             double &ql) const;
+  /// Calculate reciprocal lattice lengths in RLU
+  void arlu(const API::ExperimentInfo &exptSetup, double &arlu1, double &arlu2,
+            double &arlu3) const;
 
 private:
   DISABLE_COPY_AND_ASSIGN(ForegroundModel)
