@@ -7,6 +7,7 @@
 #include "MantidKernel/Tolerance.h"
 #include "MantidKernel/V3D.h"
 #include <cstddef>
+#include <numeric>
 #include <sstream>
 #include <stdexcept>
 
@@ -43,33 +44,19 @@ template <typename TYPE = double> class DLLExport VMDBase {
 public:
   //-------------------------------------------------------------------------------------------
   /** Default constructor, build with 1 dimension */
-  VMDBase() : nd(1) {
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(0.0);
-  }
+  VMDBase() : nd(1), data(nd) {}
 
   //-------------------------------------------------------------------------------------------
   /** Constructor
    * @param nd :: number of dimensions  */
-  VMDBase(size_t nd) : nd(nd) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(0.0);
-  }
+  VMDBase(size_t nd) : nd(nd), data(nd) {}
 
   //-------------------------------------------------------------------------------------------
   /** 2D Constructor
    * @param val0 :: value at first dimension
    * @param val1 :: value at second dimension
    */
-  VMDBase(double val0, double val1) : nd(2) {
-    data = new TYPE[nd];
-    data[0] = TYPE(val0);
-    data[1] = TYPE(val1);
-  }
+  VMDBase(TYPE val0, TYPE val1) : nd(2), data{val0, val1} {}
 
   //-------------------------------------------------------------------------------------------
   /** 3D Constructor
@@ -77,12 +64,7 @@ public:
    * @param val1 :: value at second dimension
    * @param val2 :: value at third dimension
    */
-  VMDBase(double val0, double val1, double val2) : nd(3) {
-    data = new TYPE[nd];
-    data[0] = TYPE(val0);
-    data[1] = TYPE(val1);
-    data[2] = TYPE(val2);
-  }
+  VMDBase(TYPE val0, TYPE val1, TYPE val2) : nd(3), data{val0, val1, val2} {}
 
   //-------------------------------------------------------------------------------------------
   /** 4D Constructor
@@ -91,13 +73,8 @@ public:
    * @param val2 :: value at third dimension
    * @param val3 :: value at fourth dimension
    */
-  VMDBase(double val0, double val1, double val2, double val3) : nd(4) {
-    data = new TYPE[nd];
-    data[0] = TYPE(val0);
-    data[1] = TYPE(val1);
-    data[2] = TYPE(val2);
-    data[3] = TYPE(val3);
-  }
+  VMDBase(TYPE val0, TYPE val1, TYPE val2, TYPE val3)
+      : nd(4), data{val0, val1, val2, val3} {}
 
   //-------------------------------------------------------------------------------------------
   /** 5D Constructor
@@ -107,15 +84,8 @@ public:
    * @param val3 :: value at fourth dimension
    * @param val4 :: value at fifth dimension
    */
-  VMDBase(double val0, double val1, double val2, double val3, double val4)
-      : nd(5) {
-    data = new TYPE[nd];
-    data[0] = TYPE(val0);
-    data[1] = TYPE(val1);
-    data[2] = TYPE(val2);
-    data[3] = TYPE(val3);
-    data[4] = TYPE(val4);
-  }
+  VMDBase(TYPE val0, TYPE val1, TYPE val2, TYPE val3, TYPE val4)
+      : nd(5), data{val0, val1, val2, val3, val4} {}
 
   //-------------------------------------------------------------------------------------------
   /** 6D Constructor
@@ -126,54 +96,15 @@ public:
    * @param val4 :: value at fifth dimension
    * @param val5 :: value at sixth dimension
    */
-  VMDBase(double val0, double val1, double val2, double val3, double val4,
-          double val5)
-      : nd(6) {
-    data = new TYPE[nd];
-    data[0] = TYPE(val0);
-    data[1] = TYPE(val1);
-    data[2] = TYPE(val2);
-    data[3] = TYPE(val3);
-    data[4] = TYPE(val4);
-    data[5] = TYPE(val5);
-  }
-
-  //-------------------------------------------------------------------------------------------
-  /** Copy constructor
-   * @param other :: other to copy */
-  VMDBase(const VMDBase &other) : nd(other.nd) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = other.data[d];
-  }
-
-  //-------------------------------------------------------------------------------------------
-  /** Assignment operator
-   * @param other :: copy into this
-   */
-  VMDBase &operator=(const VMDBase &other) {
-    if ((other.nd) != nd) {
-      nd = other.nd;
-      delete[] data;
-      data = new TYPE[nd];
-    }
-    for (size_t d = 0; d < nd; d++)
-      data[d] = other.data[d];
-    return *this;
-  }
+  VMDBase(TYPE val0, TYPE val1, TYPE val2, TYPE val3, TYPE val4, TYPE val5)
+      : nd(6), data{val0, val1, val2, val3, val4, val5} {}
 
   //-------------------------------------------------------------------------------------------
   /** Constructor
    * @param nd :: number of dimensions
    * @param bareData :: pointer to a nd-sized bare data array */
   VMDBase(size_t nd, const double *bareData) : nd(nd) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(bareData[d]);
+    std::copy_n(bareData, nd, data.begin());
   }
 
   //-------------------------------------------------------------------------------------------
@@ -181,43 +112,29 @@ public:
    * @param nd :: number of dimensions
    * @param bareData :: pointer to a nd-sized bare data array */
   VMDBase(size_t nd, const float *bareData) : nd(nd) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(bareData[d]);
+    std::copy_n(bareData, nd, data.begin());
   }
 
   //-------------------------------------------------------------------------------------------
   /** Constructor
    * @param vector :: V3D */
   VMDBase(const V3D &vector) : nd(3) {
-    data = new TYPE[nd];
     for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(vector[d]);
+      data.push_back(static_cast<TYPE>(vector[d]));
   }
 
   //-------------------------------------------------------------------------------------------
   /** Constructor
-   * @param vector :: vector of doubles */
-  template <class T> VMDBase(const std::vector<T> &vector) : nd(vector.size()) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(vector[d]);
-  }
+   * @param vector :: vector of T */
+  template <class T>
+  VMDBase(const std::vector<T> &vector)
+      : nd(vector.size()), data(vector.begin(), vector.end()) {}
 
   //-------------------------------------------------------------------------------------------
   /** Constructor
    * @param vector :: vector of floats */
-  VMDBase(const std::vector<float> &vector) : nd(vector.size()) {
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    for (size_t d = 0; d < nd; d++)
-      data[d] = TYPE(vector[d]);
-  }
+  VMDBase(const std::vector<float> &vector)
+      : nd(vector.size()), data(vector.begin(), vector.end()) {}
 
   //-------------------------------------------------------------------------------------------
   /** Constructor from string
@@ -227,8 +144,7 @@ public:
 
     StringTokenizer strs(str, ", ", StringTokenizer::TOK_IGNORE_EMPTY);
 
-    std::vector<TYPE> vals;
-    std::transform(strs.cbegin(), strs.cend(), std::back_inserter(vals),
+    std::transform(strs.cbegin(), strs.cend(), std::back_inserter(data),
                    [](const std::string &token) {
                      TYPE v;
                      if (!Strings::convert(token, v))
@@ -238,16 +154,12 @@ public:
                      return v;
                    });
 
-    nd = vals.size();
-    if (nd <= 0)
-      throw std::invalid_argument("nd must be > 0");
-    data = new TYPE[nd];
-    std::copy(vals.cbegin(), vals.cend(), data);
+    nd = data.size();
   }
 
   //-------------------------------------------------------------------------------------------
   /// Destructor
-  virtual ~VMDBase() { delete[] data; }
+  virtual ~VMDBase() = default;
 
   //-------------------------------------------------------------------------------------------
   /// @return the number of dimensions
@@ -265,7 +177,7 @@ public:
 
   //-------------------------------------------------------------------------------------------
   /** @return the bare data array directly. */
-  const TYPE *getBareArray() const { return data; }
+  const TYPE *getBareArray() const { return data.data(); }
 
   //-------------------------------------------------------------------------------------------
   /** Return a simple string representation of the vector
@@ -284,12 +196,7 @@ public:
    * @tparam T :: type to convert to (double/float)
    * @return the vector as a std::vector
    */
-  template <class T> std::vector<T> toVector() const {
-    typename std::vector<T> out;
-    for (size_t d = 0; d < nd; d++)
-      out.push_back(T(data[d]));
-    return out;
-  }
+  template <class T> std::vector<T> &toVector() const { return data; }
 
   //-------------------------------------------------------------------------------------------
   /** Equals operator with tolerance factor
@@ -330,6 +237,9 @@ public:
                                "between two VMDBase vectors.");
     for (size_t d = 0; d < nd; d++)
       data[d] += v.data[d];
+
+    std::transform(data.begin(), data.end(), v.getBareArray(), data.begin(),
+                   std::plus<TYPE>());
     return *this;
   }
 
@@ -350,8 +260,8 @@ public:
     if (v.nd != this->nd)
       throw std::runtime_error("Mismatch in number of dimensions in operation "
                                "between two VMDBase vectors.");
-    for (size_t d = 0; d < nd; d++)
-      data[d] -= v.data[d];
+    std::transform(data.begin(), data.end(), v.getBareArray(), data.begin(),
+                   std::minus<TYPE>());
     return *this;
   }
 
@@ -371,8 +281,8 @@ public:
     if (v.nd != this->nd)
       throw std::runtime_error("Mismatch in number of dimensions in operation "
                                "between two VMDBase vectors.");
-    for (size_t d = 0; d < nd; d++)
-      data[d] *= v.data[d];
+    std::transform(data.begin(), data.end(), v.getBareArray(), data.begin(),
+                   std::multiplies<TYPE>());
     return *this;
   }
 
@@ -410,8 +320,9 @@ public:
   /** Multiply by a scalar
    * @param scalar :: double scalar to multiply each element  */
   VMDBase &operator*=(const double scalar) {
-    for (size_t d = 0; d < nd; d++)
-      data[d] *= TYPE(scalar);
+    for (TYPE &value : data) {
+      value *= scalar;
+    }
     return *this;
   }
 
@@ -428,8 +339,9 @@ public:
   /** Divide by a scalar
    * @param scalar :: double scalar to Divide each element  */
   VMDBase &operator/=(const double scalar) {
-    for (size_t d = 0; d < nd; d++)
-      data[d] /= TYPE(scalar);
+    for (TYPE &value : data) {
+      value /= scalar;
+    }
     return *this;
   }
 
@@ -437,13 +349,11 @@ public:
   /** Scalar product of two vectors
    * @param v :: other vector, must match number of dimensions  */
   TYPE scalar_prod(const VMDBase &v) const {
-    TYPE out = 0;
     if (v.nd != this->nd)
       throw std::runtime_error("Mismatch in number of dimensions in operation "
                                "between two VMDBase vectors.");
-    for (size_t d = 0; d < nd; d++)
-      out += (data[d] * v.data[d]);
-    return out;
+    return std::inner_product(data.begin(), data.end(), v.getBareArray(),
+                              TYPE{0.0});
   }
 
   //-------------------------------------------------------------------------------------------
@@ -465,7 +375,7 @@ public:
 
   //-------------------------------------------------------------------------------------------
   /** @return the length of this vector */
-  TYPE length() const { return TYPE(std::sqrt(this->norm2())); }
+  TYPE length() const { return std::sqrt(this->norm2()); }
 
   /** @return the length of this vector */
   TYPE norm() const { return this->length(); }
@@ -478,8 +388,7 @@ public:
    * @return the length of this vector BEFORE normalizing */
   TYPE normalize() {
     TYPE length = this->length();
-    for (size_t d = 0; d < nd; d++)
-      data[d] /= length;
+    *this /= length;
     return length;
   }
 
@@ -500,7 +409,7 @@ protected:
   /// Number of dimensions
   size_t nd;
   /// Data, an array of size nd
-  TYPE *data;
+  std::vector<TYPE> data;
 };
 
 /// Underlying data type for the VMD type

@@ -42,7 +42,9 @@ public:
     TS_ASSERT_THROWS_ANYTHING(VMD(0, v1));
   }
 
-  void test_notEquals() { TS_ASSERT(VMD(1, 2, 3) != VMD(1, 2, 3.0001)); }
+  void test_notEquals() {
+    TS_ASSERT(VMD(1.0f, 2.0f, 3.0f) != VMD(1.0f, 2.0f, 3.0001f));
+  }
 
   void test_assign() {
     VMD a(1, 2, 3);
@@ -111,7 +113,7 @@ public:
   void test_div() {
     VMD a(1, 2, 3);
     VMD b(2, 3, 4);
-    VMD c(0.5, 2.0 / 3.0, 0.75);
+    VMD c(0.5, 2.0f / 3.0f, 0.75);
     TS_ASSERT_EQUALS((a / b), c);
     a /= b;
     TS_ASSERT_EQUALS(a, c);
@@ -140,15 +142,15 @@ public:
   }
 
   void test_length() {
-    VMD a(3, 4, sqrt(39.0));
+    VMD a(3, 4, std::sqrt(39.0f));
     TS_ASSERT_EQUALS(a.length(), 8.0);
     TS_ASSERT_EQUALS(a.norm(), 8.0);
     TS_ASSERT_EQUALS(a.norm2(), 64.0);
   }
 
   void test_normalize() {
-    VMD a(3, 4, sqrt(39.0));
-    VMD b(3. / 8, 4. / 8, sqrt(39.0) / 8.);
+    VMD a(3, 4, std::sqrt(39.0f));
+    VMD b(3.f / 8.f, 4.f / 8.f, std::sqrt(39.0f) / 8.f);
     TS_ASSERT_EQUALS(a.normalize(), 8.0);
     TS_ASSERT_EQUALS(a, b);
   }
@@ -169,7 +171,7 @@ public:
   void test_fromString() {
     TS_ASSERT_EQUALS(VMD("1,2,3"), VMD(1, 2, 3));
     TS_ASSERT_EQUALS(VMD("1, 2, 3"), VMD(1, 2, 3));
-    TS_ASSERT_EQUALS(VMD("1.234, 2"), VMD(1.234, 2));
+    TS_ASSERT_EQUALS(VMD("1.234f, 2"), VMD(1.234f, 2));
     TS_ASSERT_EQUALS(VMD("4 5 6 7"), VMD(4, 5, 6, 7));
     TS_ASSERT_THROWS_ANYTHING(VMD("monkey"));
     TS_ASSERT_THROWS_ANYTHING(VMD(""));
