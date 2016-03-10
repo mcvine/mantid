@@ -21,12 +21,13 @@
 #include <vtkCellData.h>
 #include <vtkFloatArray.h>
 #include <vtkHexahedron.h>
-#include <vtkVertex.h>
+#include <vtkNew.h>
 #include <vtkPoints.h>
 #include <vtkPolyVertex.h>
+#include <vtkSMPTools.h>
 #include <vtkSystemIncludes.h>
 #include <vtkUnstructuredGrid.h>
-#include <vtkNew.h>
+#include <vtkVertex.h>
 
 #include <algorithm>
 #include <boost/math/special_functions/fpclassify.hpp>
@@ -298,12 +299,12 @@ void vtkSplatterPlotFactory::sortBoxesByDecreasingSignal(
     std::cout << "START SORTING" << std::endl;
   }
 
-  std::sort(m_sortedBoxes.begin(), m_sortedBoxes.end(),
-            [getSignalFunction](IMDNode *box_1, IMDNode *box_2) {
-              double signal_1 = (box_1->*getSignalFunction)();
-              double signal_2 = (box_2->*getSignalFunction)();
-              return (signal_1 > signal_2);
-            });
+  vtkSMPTools::Sort(m_sortedBoxes.begin(), m_sortedBoxes.end(),
+                    [getSignalFunction](IMDNode *box_1, IMDNode *box_2) {
+                      double signal_1 = (box_1->*getSignalFunction)();
+                      double signal_2 = (box_2->*getSignalFunction)();
+                      return (signal_1 > signal_2);
+                    });
 
   if (VERBOSE) {
     std::cout << "DONE SORTING" << std::endl;
