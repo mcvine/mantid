@@ -284,7 +284,7 @@ void MuonSequentialFitDialog::updateCursor(DialogState newState) {
  */
 void MuonSequentialFitDialog::startFit() {
   if (m_state != Stopped)
-    throw std::runtime_error("Couln't start: already running");
+    throw std::runtime_error("Couldn't start: already running");
 
   setState(Preparing);
 
