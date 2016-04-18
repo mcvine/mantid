@@ -77,6 +77,7 @@ set ( SRC_FILES
 	src/Muon/ALCPeakFittingView.cpp
 	src/Muon/IO_MuonGrouping.cpp
 	src/Muon/MuonAnalysis.cpp
+	src/Muon/MuonAnalysisFitDataHelper.cpp
 	src/Muon/MuonAnalysisFitDataTab.cpp
 	src/Muon/MuonAnalysisHelper.cpp
 	src/Muon/MuonAnalysisOptionTab.cpp
@@ -222,6 +223,7 @@ set ( INC_FILES
 	inc/MantidQtCustomInterfaces/Muon/IALCPeakFittingView.h
 	inc/MantidQtCustomInterfaces/Muon/IO_MuonGrouping.h
 	inc/MantidQtCustomInterfaces/Muon/MuonAnalysis.h
+	inc/MantidQtCustomInterfaces/Muon/MuonAnalysisFitDataHelper.h
 	inc/MantidQtCustomInterfaces/Muon/MuonAnalysisFitDataTab.h
 	inc/MantidQtCustomInterfaces/Muon/MuonAnalysisHelper.h
 	inc/MantidQtCustomInterfaces/Muon/MuonAnalysisOptionTab.h
@@ -242,25 +244,24 @@ set ( INC_FILES
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflClearSelectedCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflCommandAdapter.h
+	inc/MantidQtCustomInterfaces/Reflectometry/ReflCommandBase.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflCopySelectedCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflCutSelectedCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflDeleteRowCommand.h
-	inc/MantidQtCustomInterfaces/Reflectometry/ReflCommand.h
-	inc/MantidQtCustomInterfaces/Reflectometry/ReflCommandBase.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflExpandCommand.h
+	inc/MantidQtCustomInterfaces/Reflectometry/ReflExportTableCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflGenerateNotebook.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflGroupRowsCommand.h
-	inc/MantidQtCustomInterfaces/Reflectometry/ReflExportTableCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflImportTableCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflLegacyTransferStrategy.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflMainView.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflMainViewPresenter.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflMeasureTransferStrategy.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflMeasurementItemSource.h
-	inc/MantidQtCustomInterfaces/Reflectometry/ReflNexusMeasurementItemSource.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflNewTableCommand.h
-	inc/MantidQtCustomInterfaces/Reflectometry/ReflOptionsCommand.h
+	inc/MantidQtCustomInterfaces/Reflectometry/ReflNexusMeasurementItemSource.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflOpenTableCommand.h
+	inc/MantidQtCustomInterfaces/Reflectometry/ReflOptionsCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflPasteSelectedCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflPlotGroupCommand.h
 	inc/MantidQtCustomInterfaces/Reflectometry/ReflPlotRowCommand.h
@@ -509,6 +510,7 @@ set ( TEST_FILES
 	IO_MuonGroupingTest.h
 	ImageROIPresenterTest.h
 	MeasurementItemTest.h
+	MuonAnalysisFitDataHelperTest.h
 	MuonAnalysisHelperTest.h
 	ParseKeyValueStringTest.h
 	ReflCommandsTest.h
