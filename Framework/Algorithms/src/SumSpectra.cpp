@@ -20,7 +20,7 @@ using namespace API;
 using namespace DataObjects;
 
 SumSpectra::SumSpectra()
-    : API::Algorithm(), m_outSpecId(0), m_minWsInd(0), m_maxWsInd(0),
+    : API::Algorithm(), m_outSpecNum(0), m_minWsInd(0), m_maxWsInd(0),
       m_keepMonitors(false), m_numberOfSpectra(0), m_yLength(0), m_indices(),
       m_calculateWeightedSum(false) {}
 
@@ -116,11 +116,11 @@ void SumSpectra::exec() {
       this->m_indices.insert(i);
   }
 
-  // determine the output spectrum id
-  m_outSpecId = this->getOutputSpecId(localworkspace);
+  // determine the output spectrum number
+  m_outSpecNum = this->getOutputSpecNo(localworkspace);
   g_log.information()
       << "Spectra remapping gives single spectra with spectra number: "
-      << m_outSpecId << "\n";
+      << m_outSpecNum << "\n";
 
   m_calculateWeightedSum = getProperty("WeightedSum");
 
@@ -152,7 +152,7 @@ void SumSpectra::exec() {
     outSpec->dataX() = localworkspace->readX(0);
 
     // Build a new spectra map
-    outSpec->setSpectrumNo(m_outSpecId);
+    outSpec->setSpectrumNo(m_outSpecNum);
     outSpec->clearDetectorIDs();
 
     if (localworkspace->id() == "RebinnedOutput") {
@@ -185,13 +185,13 @@ void SumSpectra::exec() {
 }
 
 /**
- * Determine the minimum spectrum id for summing. This requires that
+ * Determine the minimum spectrum No for summing. This requires that
  * SumSpectra::indices has already been set.
  * @param localworkspace The workspace to use.
- * @return The minimum spectrum id for all the spectra being summed.
+ * @return The minimum spectrum No for all the spectra being summed.
  */
 specnum_t
-SumSpectra::getOutputSpecId(MatrixWorkspace_const_sptr localworkspace) {
+SumSpectra::getOutputSpecNo(MatrixWorkspace_const_sptr localworkspace) {
   // initial value
   specnum_t specId =
       localworkspace->getSpectrum(*(this->m_indices.begin()))->getSpectrumNo();
@@ -200,7 +200,7 @@ SumSpectra::getOutputSpecId(MatrixWorkspace_const_sptr localworkspace) {
   int totalSpec = static_cast<int>(localworkspace->getNumberHistograms());
 
   specnum_t temp;
-  for (auto index : this->m_indices) {
+  for (const auto index : this->m_indices) {
     if (index < totalSpec) {
       temp = localworkspace->getSpectrum(index)->getSpectrumNo();
       if (temp < specId)
@@ -241,8 +241,7 @@ void SumSpectra::doWorkspace2D(MatrixWorkspace_const_sptr localworkspace,
   numZeros = 0;
 
   // Loop over spectra
-  for (auto it = this->m_indices.begin(); it != this->m_indices.end(); ++it) {
-    int i = *it;
+  for (const auto i : this->m_indices) {
     // Don't go outside the range.
     if ((i >= this->m_numberOfSpectra) || (i < 0)) {
       g_log.error() << "Invalid index " << i
@@ -296,9 +295,9 @@ void SumSpectra::doWorkspace2D(MatrixWorkspace_const_sptr localworkspace,
   if (m_calculateWeightedSum) {
     numZeros = 0;
     for (size_t i = 0; i < Weight.size(); i++) {
-      if (nZeros[i] == 0)
-        YSum[i] *= double(numSpectra) / Weight[i];
-      else
+      if (numSpectra > nZeros[i])
+        YSum[i] *= double(numSpectra - nZeros[i]) / Weight[i];
+      if (nZeros[i] != 0)
         numZeros += nZeros[i];
     }
   }
@@ -354,9 +353,7 @@ void SumSpectra::doRebinnedOutput(MatrixWorkspace_sptr outputWorkspace,
   numZeros = 0;
 
   // Loop over spectra
-  // for (int i = m_minWsIndex; i <= m_maxWsIndex; ++i)
-  for (auto it = m_indices.begin(); it != m_indices.end(); ++it) {
-    int i = *it;
+  for (const auto i : m_indices) {
     // Don't go outside the range.
     if ((i >= m_numberOfSpectra) || (i < 0)) {
       g_log.error() << "Invalid index " << i
@@ -415,9 +412,9 @@ void SumSpectra::doRebinnedOutput(MatrixWorkspace_sptr outputWorkspace,
   if (m_calculateWeightedSum) {
     numZeros = 0;
     for (size_t i = 0; i < Weight.size(); i++) {
-      if (nZeros[i] == 0)
-        YSum[i] *= double(numSpectra) / Weight[i];
-      else
+      if (numSpectra > nZeros[i])
+        YSum[i] *= double(numSpectra - nZeros[i]) / Weight[i];
+      if (nZeros[i] != 0)
         numZeros += nZeros[i];
     }
   }
@@ -444,16 +441,14 @@ void SumSpectra::execEvent(EventWorkspace_const_sptr localworkspace,
 
   // Get the pointer to the output event list
   EventList &outEL = outputWorkspace->getEventList(0);
-  outEL.setSpectrumNo(m_outSpecId);
+  outEL.setSpectrumNo(m_outSpecNum);
   outEL.clearDetectorIDs();
 
   // Loop over spectra
   size_t numSpectra(0);
   size_t numMasked(0);
   size_t numZeros(0);
-  // for (int i = m_minWsIndex; i <= m_maxWsIndex; ++i)
-  for (auto it = indices.begin(); it != indices.end(); ++it) {
-    int i = *it;
+  for (const auto i : indices) {
     // Don't go outside the range.
     if ((i >= m_numberOfSpectra) || (i < 0)) {
       g_log.error() << "Invalid index " << i

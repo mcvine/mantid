@@ -111,7 +111,7 @@ SmoothMD::hatSmooth(IMDHistoWorkspace_const_sptr toSmooth,
   uint64_t nPoints = toSmooth->getNPoints();
   Progress progress(this, 0, 1, size_t(double(nPoints) * 1.1));
   // Create the output workspace.
-  IMDHistoWorkspace_sptr outWS(toSmooth->clone().release());
+  IMDHistoWorkspace_sptr outWS(toSmooth->clone());
   progress.reportIncrement(
       size_t(double(nPoints) * 0.1)); // Report ~10% progress
 
@@ -121,7 +121,7 @@ SmoothMD::hatSmooth(IMDHistoWorkspace_const_sptr toSmooth,
   auto iterators = toSmooth->createIterators(nThreads, nullptr);
 
   PARALLEL_FOR_NO_WSP_CHECK()
-  for (int it = 0; it < int(iterators.size()); ++it) {
+  for (int it = 0; it < int(iterators.size()); ++it) { // NOLINT
 
     PARALLEL_START_INTERUPT_REGION
     boost::scoped_ptr<MDHistoWorkspaceIterator> iterator(
