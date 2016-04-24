@@ -3,8 +3,10 @@
 
 #include <string>
 #include <vector>
+#include <qwt_plot_curve.h>
 #include <QStringList>
 
+#include "MantidAPI/IPeakFunction.h"
 #include "MantidAPI/MatrixWorkspace_fwd.h"
 #include "MantidQtCustomInterfaces/EnggDiffraction/EnggDiffCalibSettings.h"
 
@@ -125,7 +127,7 @@ public:
   virtual int currentCropCalibBankName() const = 0;
 
   /**
-  * customised spec will be passed via specID text field for the
+  * customised spec will be passed via specNo text field for the
   * cropped calibrartion process to be carried out
   *
   * @return which format should to applied for plotting data
@@ -133,7 +135,7 @@ public:
   virtual std::string currentCalibSpecNos() const = 0;
 
   /**
-  * customised bank name will be passed with spectrumIDs to
+  * customised bank name will be passed with SpectrumNos to
   * save workspace and file with particular bank name
   *
   * @return string which will be used to generate bank name
@@ -278,12 +280,12 @@ public:
   virtual std::vector<bool> focusingBanks() const = 0;
 
   /**
-   * Specification of spectrum IDs for focus in "cropped" mode.
+   * Specification of spectrum Nos for focus in "cropped" mode.
    *
-   * @return spectrum IDs, expected as a comma separated list of
+   * @return spectrum Nos, expected as a comma separated list of
    * integers or ranges of integers.
    */
-  virtual std::string focusingCroppedSpectrumIDs() const = 0;
+  virtual std::string focusingCroppedSpectrumNos() const = 0;
 
   /**
    * Detector grouping file, used when focusing in "texture" mode.
@@ -344,6 +346,30 @@ public:
    * @return the time parameter (bin width) when rebinning by pulses.
    */
   virtual double rebinningPulsesTime() const = 0;
+
+  /**
+  * returns directory of the file name to preform fitting on
+  *
+  * @return directory as std::string
+  */
+  virtual std::string fittingRunNo() const = 0;
+
+  /**
+  * A list of dSpacing values to be translated into TOF
+  * to find expected peaks.
+  *
+  * @return list of dSpacing values as std::string
+  */
+  virtual std::string fittingPeaksData() const = 0;
+
+  /**
+  * generates and sets the curves on the fitting tab
+  * @param data of the workspace to be passed as QwtData
+  * @param focused to check whether focused workspace
+  *
+  */
+  virtual void setDataVector(std::vector<boost::shared_ptr<QwtData>> &data,
+                             bool focused) = 0;
   //@}
 
   /**
@@ -400,6 +426,10 @@ public:
   virtual void plotReplacingWindow(const std::string &wsName,
                                    const std::string &spectrum,
                                    const std::string &type) = 0;
+
+
+
+
 };
 
 } // namespace CustomInterfaces
