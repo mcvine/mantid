@@ -28,14 +28,23 @@
     Code Documentation is available at: <http://doxygen.mantidproject.org>
 */
 #include "MantidKernel/DllConfig.h"
+#include <cstdint>
+#include <limits>
 
 namespace Mantid {
 
-/// Returns what we consider an "empty" integer
-DLLExport int EMPTY_INT();
+/// Returns what we consider an "empty" value
+template <class type>
+typename std::enable_if<std::is_arithmetic<type>::value, type>::type
+emptyValue() {
+  return std::numeric_limits<type>::max();
+}
+
+/// Returns what we consider an "empty" int
+DLLExport int32_t EMPTY_INT();
 
 /// Returns what we consider an "empty" long
-DLLExport long EMPTY_LONG();
+DLLExport int64_t EMPTY_LONG();
 
 /// Return what we consider to be an empty double
 DLLExport double EMPTY_DBL();
