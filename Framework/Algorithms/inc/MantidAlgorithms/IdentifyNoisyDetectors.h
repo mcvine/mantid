@@ -37,9 +37,6 @@ namespace Algorithms {
 */
 class DLLExport IdentifyNoisyDetectors : public API::Algorithm {
 public:
-  IdentifyNoisyDetectors() : API::Algorithm() {} ///< Empty constructor
-  ~IdentifyNoisyDetectors() override = default;  ///< Empty destructor
-
   const std::string name() const override {
     return "IdentifyNoisyDetectors";
   } ///< @return the algorithms name

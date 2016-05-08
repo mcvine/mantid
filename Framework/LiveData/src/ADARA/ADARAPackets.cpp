@@ -556,7 +556,6 @@ BeamlineInfoPkt::BeamlineInfoPkt(const uint8_t *data, uint32_t len)
   m_longName.assign(info, longName_len);
 }
 
-BeamlineInfoPkt::BeamlineInfoPkt(const BeamlineInfoPkt &pkt) = default;
 /* ------------------------------------------------------------------------ */
 
 BeamMonitorConfigPkt::BeamMonitorConfigPkt(const uint8_t *data, uint32_t len)

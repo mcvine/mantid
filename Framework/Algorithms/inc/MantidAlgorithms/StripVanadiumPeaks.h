@@ -60,8 +60,6 @@ class DLLExport StripVanadiumPeaks : public API::Algorithm {
 public:
   /// (Empty) Constructor
   StripVanadiumPeaks();
-  /// Virtual destructor
-  ~StripVanadiumPeaks() override = default;
   /// Algorithm's name
   const std::string name() const override { return "StripVanadiumPeaks"; }
   /// Summary of algorithms purpose

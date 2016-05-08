@@ -56,11 +56,6 @@ namespace Algorithms {
  */
 class DLLExport NormaliseToUnity : public API::Algorithm {
 public:
-  /// Default constructor
-  NormaliseToUnity() : API::Algorithm(){};
-  /// Destructor
-  ~NormaliseToUnity() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "NormaliseToUnity"; }
   /// Summary of algorithms purpose

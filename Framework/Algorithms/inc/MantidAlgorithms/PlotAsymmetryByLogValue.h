@@ -61,9 +61,6 @@ class DLLExport PlotAsymmetryByLogValue : public API::Algorithm {
 public:
   /// Default constructor
   PlotAsymmetryByLogValue();
-  /// Destructor
-  ~PlotAsymmetryByLogValue() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "PlotAsymmetryByLogValue"; }
   /// Summary of algorithms purpose

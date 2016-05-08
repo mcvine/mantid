@@ -55,9 +55,6 @@ class DLLExport ExponentialCorrection : public UnaryOperation {
 public:
   /// Default constructor
   ExponentialCorrection();
-  /// Destructor
-  ~ExponentialCorrection() override = default;
-  ;
   /// Algorithm's name for identification
   const std::string name() const override { return "ExponentialCorrection"; }
   /// Summary of algorithms purpose

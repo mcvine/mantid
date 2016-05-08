@@ -74,24 +74,6 @@ struct SpectraInfo {
       : nSpectra(_nSpectra), hasSpectra(_hasSpectra),
         spectraNumbers(_spectraNumbers), detectorIndex(_detectorIndex),
         detectorCount(_detectorCount), detectorList(_detectorList) {}
-
-  SpectraInfo(const SpectraInfo &other) = default;
-
-  /*
-  SpectraInfo& operator=(const SpectraInfo& other)
-  {
-    if (&other != this)
-    {
-      nSpectra = other.nSpectra;
-      hasSpectra = other.hasSpectra;
-      spectraNumbers = other.spectraNumbers;
-      detectorIndex = other.detectorIndex;
-      detectorCount = other.detectorCount;
-      detectorList = other.detectorList;
-    }
-    return *this;
-  }
-  */
 };
 
 // Helper typdef.

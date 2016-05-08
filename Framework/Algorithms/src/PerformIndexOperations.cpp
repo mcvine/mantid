@@ -56,7 +56,6 @@ class NullCommand : public Command {
     throw std::runtime_error(
         "Should not be attempting ::execute on a NullCommand");
   }
-  ~NullCommand() override = default;
 };
 
 /**
@@ -87,7 +86,6 @@ public:
     return outWS;
   }
 
-  ~AdditionCommand() override = default;
 };
 
 /**
@@ -130,7 +128,6 @@ public:
     }
     return outWS;
   }
-  ~CropCommand() override = default;
 };
 
 /**
@@ -163,7 +160,6 @@ public:
     }
     return command;
   }
-  ~CommandParserBase() override = default;
 
 private:
   virtual std::string getSeparator() const = 0;
@@ -175,7 +171,6 @@ private:
  */
 class AdditionParserRange : public CommandParserBase<AdditionCommand> {
 public:
-  ~AdditionParserRange() override = default;
 
 private:
   boost::regex getRegex() const override {
@@ -189,7 +184,6 @@ private:
  */
 class AdditionParser : public CommandParser {
 public:
-  ~AdditionParser() override = default;
 
   Command *interpret(const std::string &instruction) const override {
     Command *command = nullptr;
@@ -217,7 +211,6 @@ public:
  */
 class CropParserRange : public CommandParserBase<CropCommand> {
 public:
-  ~CropParserRange() override = default;
 
 private:
   boost::regex getRegex() const override {
@@ -231,8 +224,6 @@ private:
  */
 class CropParserIndex : public CommandParser {
 public:
-  ~CropParserIndex() override = default;
-
   Command *interpret(const std::string &instruction) const override {
     Command *command = nullptr;
     boost::regex ex("^\\s*[0-9]+\\s*$");

@@ -43,8 +43,6 @@ class DLLExport SaveSPE : public API::Algorithm {
 public:
   /// Constructor
   SaveSPE();
-  /// Virtual destructor
-  ~SaveSPE() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SaveSPE"; }
   /// Summary of algorithms purpose

@@ -47,8 +47,6 @@ class DLLExport LoadDaveGrp : public API::IFileLoader<Kernel::FileDescriptor> {
 public:
   /// Constructor
   LoadDaveGrp();
-  /// Virtual destructor
-  ~LoadDaveGrp() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadDaveGrp"; }
   /// Summary of algorithms purpose

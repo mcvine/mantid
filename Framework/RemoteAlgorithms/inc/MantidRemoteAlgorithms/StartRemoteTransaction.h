@@ -8,10 +8,6 @@ namespace RemoteAlgorithms {
 
 class DLLExport StartRemoteTransaction : public Mantid::API::Algorithm {
 public:
-  /// (Empty) Constructor
-  StartRemoteTransaction() : Mantid::API::Algorithm() {}
-  /// Virtual destructor
-  ~StartRemoteTransaction() override = default;
   /// Algorithm's name
   const std::string name() const override { return "StartRemoteTransaction"; }
   /// Summary of algorithms purpose

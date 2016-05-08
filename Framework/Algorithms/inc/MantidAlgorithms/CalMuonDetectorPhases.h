@@ -34,11 +34,6 @@ namespace Algorithms {
 */
 class DLLExport CalMuonDetectorPhases : public API::Algorithm {
 public:
-  /// Default constructor
-  CalMuonDetectorPhases() : API::Algorithm(){};
-  /// Destructor
-  ~CalMuonDetectorPhases() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "CalMuonDetectorPhases"; }
   /// Summary of algorithms purpose

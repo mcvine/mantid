@@ -78,8 +78,6 @@ class DLLExport FlatPlateAbsorption : public AbsorptionCorrection {
 public:
   /// (Empty) Constructor
   FlatPlateAbsorption();
-  /// Virtual destructor
-  ~FlatPlateAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override { return "FlatPlateAbsorption"; }
   /// Summary of algorithms purpose

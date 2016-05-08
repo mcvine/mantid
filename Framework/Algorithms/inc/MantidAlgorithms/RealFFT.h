@@ -38,11 +38,6 @@ namespace Algorithms {
  */
 class DLLExport RealFFT : public API::Algorithm {
 public:
-  /// Default constructor
-  RealFFT() : API::Algorithm(){};
-  /// Destructor
-  ~RealFFT() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "RealFFT"; }
   /// Summary of algorithms purpose

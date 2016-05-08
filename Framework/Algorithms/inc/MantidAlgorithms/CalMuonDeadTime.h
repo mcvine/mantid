@@ -36,11 +36,6 @@ Code Documentation is available at: <http://doxygen.mantidproject.org>
 */
 class DLLExport CalMuonDeadTime : public API::Algorithm {
 public:
-  /// Default constructor
-  CalMuonDeadTime() : API::Algorithm(){};
-  /// Destructor
-  ~CalMuonDeadTime() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "CalMuonDeadTime"; }
   /// Summary of algorithms purpose

@@ -72,9 +72,6 @@ public:
   /// Default constructor initialises all values to zero and runs the base class
   /// constructor
   MedianDetectorTest();
-  /// Destructor
-  ~MedianDetectorTest() override = default;
-  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "MedianDetectorTest"; }
   const std::string category() const override;

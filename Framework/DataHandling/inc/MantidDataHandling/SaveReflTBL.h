@@ -40,8 +40,6 @@ class DLLExport SaveReflTBL : public API::Algorithm {
 public:
   /// Default constructor
   SaveReflTBL();
-  /// Destructor
-  ~SaveReflTBL() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveReflTBL"; }
   /// Summary of algorithms purpose

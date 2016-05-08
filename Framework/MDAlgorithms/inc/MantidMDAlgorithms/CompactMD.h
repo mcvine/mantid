@@ -38,10 +38,6 @@ namespace Mantid {
 namespace MDAlgorithms {
 class DLLExport CompactMD : public API::Algorithm {
 public:
-  CompactMD(){};
-  ~CompactMD() override = default;
-  ;
-
   void init() override;
   void exec() override;
   /// Algorithm's name for identification

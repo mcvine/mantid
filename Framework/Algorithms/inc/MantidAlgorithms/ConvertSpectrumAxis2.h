@@ -45,10 +45,6 @@ namespace Algorithms {
 */
 class DLLExport ConvertSpectrumAxis2 : public API::Algorithm {
 public:
-  /// (Empty) Constructor
-  ConvertSpectrumAxis2();
-  /// Virtual destructor
-  ~ConvertSpectrumAxis2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ConvertSpectrumAxis"; }
   /// Summary of algorithms purpose
