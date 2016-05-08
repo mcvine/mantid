@@ -47,7 +47,8 @@ public:
   /// Default constructor
   SortEvents() : API::Algorithm(){};
   /// Destructor
-  ~SortEvents() override{};
+  ~SortEvents() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SortEvents"; }
   /// Summary of algorithms purpose

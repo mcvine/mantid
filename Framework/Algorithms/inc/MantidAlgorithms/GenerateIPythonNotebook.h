@@ -42,7 +42,7 @@ namespace Algorithms {
 class DLLExport GenerateIPythonNotebook : public API::Algorithm {
 public:
   GenerateIPythonNotebook() : Mantid::API::Algorithm() {}
-  ~GenerateIPythonNotebook() override {}
+  ~GenerateIPythonNotebook() override = default;
 
   /// Algorithm's name for identification
   const std::string name() const override { return "GenerateIPythonNotebook"; };

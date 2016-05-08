@@ -35,7 +35,7 @@ public:
   /// (Empty) Constructor
   Authenticate2() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~Authenticate2() override {}
+  ~Authenticate2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Authenticate"; }
   /// Summary of algorithms purpose

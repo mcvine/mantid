@@ -40,7 +40,7 @@ public:
   /// Constructor
   RefRoi();
   /// Virtual destructor
-  ~RefRoi() override {}
+  ~RefRoi() override = default;
   /// Algorithm's name
   const std::string name() const override { return "RefRoi"; }
   /// Summary of algorithms purpose

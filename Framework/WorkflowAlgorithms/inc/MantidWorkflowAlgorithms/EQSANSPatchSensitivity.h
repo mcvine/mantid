@@ -38,7 +38,7 @@ public:
   /// (Empty) Constructor
   EQSANSPatchSensitivity() : API::Algorithm() {}
   /// Virtual destructor
-  ~EQSANSPatchSensitivity() override {}
+  ~EQSANSPatchSensitivity() override = default;
   /// Algorithm's name
   const std::string name() const override { return "EQSANSPatchSensitivity"; }
   /// Summary of algorithms purpose

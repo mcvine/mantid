@@ -78,7 +78,7 @@ public:
   /// (Empty) Constructor
   AnvredCorrection();
   /// Virtual destructor
-  ~AnvredCorrection() override {}
+  ~AnvredCorrection() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "AnvredCorrection"; }
   /// Summary of algorithms purpose

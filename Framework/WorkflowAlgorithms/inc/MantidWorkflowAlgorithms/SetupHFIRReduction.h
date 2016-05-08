@@ -42,7 +42,7 @@ public:
   /// Constructor
   SetupHFIRReduction() : API::Algorithm() {}
   /// Virtual destructor
-  ~SetupHFIRReduction() override {}
+  ~SetupHFIRReduction() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SetupHFIRReduction"; }
   /// Summary of algorithms purpose

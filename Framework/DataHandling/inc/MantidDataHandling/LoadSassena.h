@@ -57,7 +57,7 @@ public:
   /// Constructor
   LoadSassena() : API::IFileLoader<Kernel::NexusDescriptor>(), m_filename(""){};
   /// Virtual Destructor
-  ~LoadSassena() override {}
+  ~LoadSassena() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadSassena"; }
   /// Summary of algorithms purpose

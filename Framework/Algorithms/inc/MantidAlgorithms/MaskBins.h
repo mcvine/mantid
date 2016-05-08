@@ -56,7 +56,7 @@ public:
   /// Constructor
   MaskBins();
   /// Virtual destructor
-  ~MaskBins() override {}
+  ~MaskBins() override = default;
   /// Algorithm's name
   const std::string name() const override { return "MaskBins"; }
   /// Summary of algorithms purpose

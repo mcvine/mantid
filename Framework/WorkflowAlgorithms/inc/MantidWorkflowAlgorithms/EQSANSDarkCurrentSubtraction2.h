@@ -36,7 +36,7 @@ public:
   /// (Empty) Constructor
   EQSANSDarkCurrentSubtraction2() : API::Algorithm() {}
   /// Virtual destructor
-  ~EQSANSDarkCurrentSubtraction2() override {}
+  ~EQSANSDarkCurrentSubtraction2() override = default;
   /// Algorithm's name
   const std::string name() const override {
     return "EQSANSDarkCurrentSubtraction";

@@ -62,7 +62,8 @@ public:
   /// Default constructor
   DetectorEfficiencyVariation();
   /// Destructor
-  ~DetectorEfficiencyVariation() override{};
+  ~DetectorEfficiencyVariation() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override {
     return "DetectorEfficiencyVariation";

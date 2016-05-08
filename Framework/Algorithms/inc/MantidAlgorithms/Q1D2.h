@@ -42,7 +42,7 @@ public:
   /// Default constructor
   Q1D2();
   /// Virtual destructor
-  ~Q1D2() override {}
+  ~Q1D2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Q1D"; }
   /// Summary of algorithms purpose

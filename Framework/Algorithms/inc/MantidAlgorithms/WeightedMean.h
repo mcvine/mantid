@@ -47,7 +47,7 @@ public:
   /// Empty Constructor
   WeightedMean() : BinaryOperation() {}
   /// Empty Destructor
-  ~WeightedMean() override {}
+  ~WeightedMean() override = default;
 
   const std::string name() const override { return "WeightedMean"; }
   /// Summary of algorithms purpose

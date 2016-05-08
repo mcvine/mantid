@@ -86,7 +86,7 @@ public:
   SaveCSV();
 
   /// Destructor
-  ~SaveCSV() override {}
+  ~SaveCSV() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveCSV"; };
   /// Summary of algorithms purpose

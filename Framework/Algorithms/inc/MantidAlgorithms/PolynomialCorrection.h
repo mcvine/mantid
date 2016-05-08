@@ -54,7 +54,8 @@ public:
   /// Default constructor
   PolynomialCorrection();
   /// Destructor
-  ~PolynomialCorrection() override{};
+  ~PolynomialCorrection() override = default;
+  ;
   /// Algorithm's name for identification
   const std::string name() const override { return "PolynomialCorrection"; }
   /// Summary of algorithms purpose

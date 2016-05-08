@@ -47,7 +47,7 @@ public:
   /// (Empty) Constructor
   ApplyTransmissionCorrection() : API::Algorithm() {}
   /// Virtual destructor
-  ~ApplyTransmissionCorrection() override {}
+  ~ApplyTransmissionCorrection() override = default;
   /// Algorithm's name
   const std::string name() const override {
     return "ApplyTransmissionCorrection";

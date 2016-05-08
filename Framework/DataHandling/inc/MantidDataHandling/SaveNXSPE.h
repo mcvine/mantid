@@ -38,7 +38,7 @@ public:
   /// Constructor
   SaveNXSPE();
   /// Virtual dtor
-  ~SaveNXSPE() override {}
+  ~SaveNXSPE() override = default;
   const std::string name() const override { return "SaveNXSPE"; }
   /// Summary of algorithms purpose
   const std::string summary() const override {

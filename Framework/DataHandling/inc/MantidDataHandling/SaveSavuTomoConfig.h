@@ -45,7 +45,7 @@ class DLLExport SaveSavuTomoConfig : public API::Algorithm {
 public:
   SaveSavuTomoConfig();
   /// Virtual dtor
-  ~SaveSavuTomoConfig() override {}
+  ~SaveSavuTomoConfig() override = default;
 
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveSavuTomoConfig"; }

@@ -49,7 +49,7 @@ public:
     sendInitialSetup();
   }
   /// Destructor.
-  ~TestServerConnection() override {}
+  ~TestServerConnection() override = default;
   /// Sends an OK message when there is nothing to send or an error occured
   void sendOK() {
     std::string comm = "OK";

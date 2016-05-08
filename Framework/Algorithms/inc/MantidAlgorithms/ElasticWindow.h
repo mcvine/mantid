@@ -41,7 +41,7 @@ public:
   /// (Empty) Constructor
   ElasticWindow() : API::Algorithm() {}
   /// Virtual destructor
-  ~ElasticWindow() override {}
+  ~ElasticWindow() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ElasticWindow"; }
   /// Summary of algorithms purpose

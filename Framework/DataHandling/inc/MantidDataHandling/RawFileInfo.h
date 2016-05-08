@@ -66,7 +66,7 @@ public:
   /// (Empty) Constructor
   RawFileInfo() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~RawFileInfo() override {}
+  ~RawFileInfo() override = default;
   /// Algorithm's name
   const std::string name() const override { return "RawFileInfo"; }
   /// Summary of algorithms purpose

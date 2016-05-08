@@ -54,7 +54,7 @@ public:
   SaveToSNSHistogramNexus();
 
   /// Destructor
-  ~SaveToSNSHistogramNexus() override {}
+  ~SaveToSNSHistogramNexus() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveToSNSHistogramNexus"; };
   /// Summary of algorithms purpose

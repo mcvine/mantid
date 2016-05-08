@@ -61,7 +61,7 @@ public:
   /// Default constructor
   PoldiAutoCorrelation5() {}
   /// Destructor
-  ~PoldiAutoCorrelation5() override {}
+  ~PoldiAutoCorrelation5() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "PoldiAutoCorrelation"; }
   /// Summary of algorithms purpose

@@ -54,7 +54,7 @@ public:
   /// (Empty) Constructor
   SpatialGrouping() : API::Algorithm() {}
   /// Virtual destructor
-  ~SpatialGrouping() override {}
+  ~SpatialGrouping() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SpatialGrouping"; }
   /// Summary of algorithms purpose

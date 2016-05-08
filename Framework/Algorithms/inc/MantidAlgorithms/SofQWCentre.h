@@ -53,7 +53,7 @@ public:
   /// (Empty) Constructor
   SofQWCentre() : API::Algorithm() {}
   /// Virtual destructor
-  ~SofQWCentre() override {}
+  ~SofQWCentre() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SofQWCentre"; }
   /// Summary of algorithms purpose

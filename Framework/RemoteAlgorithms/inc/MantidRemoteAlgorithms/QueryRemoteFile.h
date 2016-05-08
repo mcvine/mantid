@@ -11,7 +11,7 @@ public:
   /// (Empty) Constructor
   QueryRemoteFile() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~QueryRemoteFile() override {}
+  ~QueryRemoteFile() override = default;
   /// Algorithm's name
   const std::string name() const override { return "QueryRemoteFile"; }
   /// Summary of algorithms purpose

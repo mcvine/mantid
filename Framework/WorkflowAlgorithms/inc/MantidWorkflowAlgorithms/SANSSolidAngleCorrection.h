@@ -39,7 +39,7 @@ public:
   /// (Empty) Constructor
   SANSSolidAngleCorrection() : API::Algorithm() {}
   /// Virtual destructor
-  ~SANSSolidAngleCorrection() override {}
+  ~SANSSolidAngleCorrection() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SANSSolidAngleCorrection"; }
   /// Summary of algorithms purpose

@@ -14,7 +14,7 @@ public:
   /// (Empty) Constructor
   HFIRSANSNormalise() : API::Algorithm() {}
   /// Virtual destructor
-  ~HFIRSANSNormalise() override {}
+  ~HFIRSANSNormalise() override = default;
   /// Algorithm's name
   const std::string name() const override { return "HFIRSANSNormalise"; }
   /// Summary of algorithms purpose

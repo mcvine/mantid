@@ -50,7 +50,8 @@ public:
   /// Default constructor
   Power();
   /// Destructor
-  ~Power() override{};
+  ~Power() override = default;
+  ;
   /// Algorithm's name for identification
   const std::string name() const override { return "Power"; }
   /// Summary of algorithms purpose

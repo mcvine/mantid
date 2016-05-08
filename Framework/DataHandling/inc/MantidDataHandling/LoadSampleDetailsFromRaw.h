@@ -47,7 +47,7 @@ public:
   /// (Empty) Constructor
   LoadSampleDetailsFromRaw() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~LoadSampleDetailsFromRaw() override {}
+  ~LoadSampleDetailsFromRaw() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadSampleDetailsFromRaw"; }
   /// Summary of algorithms purpose

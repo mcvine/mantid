@@ -35,7 +35,7 @@ public:
   /// Default constructor
   Logout2() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~Logout2() override {}
+  ~Logout2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Logout"; }
   /// Summary of algorithms purpose

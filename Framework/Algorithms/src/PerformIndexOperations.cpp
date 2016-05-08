@@ -41,7 +41,7 @@ public:
     }
   }
 
-  virtual ~Command() {}
+  virtual ~Command() = default;
 };
 
 /// Helper typedef
@@ -56,7 +56,7 @@ class NullCommand : public Command {
     throw std::runtime_error(
         "Should not be attempting ::execute on a NullCommand");
   }
-  ~NullCommand() override {}
+  ~NullCommand() override = default;
 };
 
 /**
@@ -87,7 +87,7 @@ public:
     return outWS;
   }
 
-  ~AdditionCommand() override {}
+  ~AdditionCommand() override = default;
 };
 
 /**
@@ -130,7 +130,7 @@ public:
     }
     return outWS;
   }
-  ~CropCommand() override {}
+  ~CropCommand() override = default;
 };
 
 /**
@@ -140,7 +140,7 @@ class CommandParser {
 public:
   virtual Command *interpret(const std::string &instruction) const = 0;
 
-  virtual ~CommandParser() {}
+  virtual ~CommandParser() = default;
 };
 
 /// Helper typedef for vector of command parsers
@@ -163,7 +163,7 @@ public:
     }
     return command;
   }
-  ~CommandParserBase() override {}
+  ~CommandParserBase() override = default;
 
 private:
   virtual std::string getSeparator() const = 0;
@@ -175,7 +175,7 @@ private:
  */
 class AdditionParserRange : public CommandParserBase<AdditionCommand> {
 public:
-  ~AdditionParserRange() override {}
+  ~AdditionParserRange() override = default;
 
 private:
   boost::regex getRegex() const override {
@@ -189,7 +189,7 @@ private:
  */
 class AdditionParser : public CommandParser {
 public:
-  ~AdditionParser() override {}
+  ~AdditionParser() override = default;
 
   Command *interpret(const std::string &instruction) const override {
     Command *command = nullptr;
@@ -217,7 +217,7 @@ public:
  */
 class CropParserRange : public CommandParserBase<CropCommand> {
 public:
-  ~CropParserRange() override {}
+  ~CropParserRange() override = default;
 
 private:
   boost::regex getRegex() const override {
@@ -231,7 +231,7 @@ private:
  */
 class CropParserIndex : public CommandParser {
 public:
-  ~CropParserIndex() override {}
+  ~CropParserIndex() override = default;
 
   Command *interpret(const std::string &instruction) const override {
     Command *command = nullptr;
@@ -263,7 +263,7 @@ PerformIndexOperations::PerformIndexOperations() {}
 //------------------------------------------------------------------------------
 /** Destructor
  */
-PerformIndexOperations::~PerformIndexOperations() {}
+PerformIndexOperations::~PerformIndexOperations() = default;
 
 //------------------------------------------------------------------------------
 /// Algorithm's name for identification. @see Algorithm::name

@@ -79,7 +79,7 @@ public:
   /// (Empty) Constructor
   FlatPlateAbsorption();
   /// Virtual destructor
-  ~FlatPlateAbsorption() override {}
+  ~FlatPlateAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override { return "FlatPlateAbsorption"; }
   /// Summary of algorithms purpose

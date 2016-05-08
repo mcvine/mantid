@@ -51,7 +51,7 @@ public:
   /// (Empty) Constructor
   Scale() : API::Algorithm() {}
   /// Virtual destructor
-  ~Scale() override {}
+  ~Scale() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Scale"; }
   /// Summary of algorithms purpose

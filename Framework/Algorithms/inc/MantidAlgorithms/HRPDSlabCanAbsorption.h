@@ -72,7 +72,7 @@ public:
   /// (Empty) Constructor
   HRPDSlabCanAbsorption() : API::Algorithm() {}
   /// Virtual destructor
-  ~HRPDSlabCanAbsorption() override {}
+  ~HRPDSlabCanAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override { return "HRPDSlabCanAbsorption"; }
   /// Summary of algorithms purpose

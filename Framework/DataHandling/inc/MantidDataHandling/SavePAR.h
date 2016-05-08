@@ -61,7 +61,7 @@ public:
   /// (Empty) Constructor
   SavePAR() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~SavePAR() override {}
+  ~SavePAR() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SavePAR"; }
   /// Summary of algorithms purpose

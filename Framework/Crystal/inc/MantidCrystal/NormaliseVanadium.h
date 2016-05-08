@@ -50,7 +50,7 @@ public:
   /// (Empty) Constructor
   NormaliseVanadium();
   /// Virtual destructor
-  ~NormaliseVanadium() override {}
+  ~NormaliseVanadium() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "NormaliseVanadium"; }
   /// Summary of algorithms purpose

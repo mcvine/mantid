@@ -49,7 +49,8 @@ public:
   /// Default constructor
   Multiply() : CommutativeBinaryOperation(){};
   /// Destructor
-  ~Multiply() override{};
+  ~Multiply() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Multiply"; }
   /// Summary of algorithms purpose

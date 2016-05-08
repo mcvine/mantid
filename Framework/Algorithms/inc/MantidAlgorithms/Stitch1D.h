@@ -37,7 +37,8 @@ public:
   /// Default constructor
   Stitch1D(){};
   /// Destructor
-  ~Stitch1D() override{};
+  ~Stitch1D() override = default;
+  ;
   /// Algorithm's name for identification. @see Algorithm::name
   const std::string name() const override { return "Stitch1D"; }
   /// Algorithm's version for identification. @see Algorithm::version

@@ -37,7 +37,7 @@ public:
   /// (Empty) Constructor
   ComputeSensitivity() : API::DataProcessorAlgorithm() {}
   /// Virtual destructor
-  ~ComputeSensitivity() override {}
+  ~ComputeSensitivity() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ComputeSensitivity"; }
   /// Summary of algorithms purpose

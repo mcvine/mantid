@@ -39,7 +39,8 @@ namespace MDAlgorithms {
 class DLLExport CompactMD : public API::Algorithm {
 public:
   CompactMD(){};
-  ~CompactMD() override{};
+  ~CompactMD() override = default;
+  ;
 
   void init() override;
   void exec() override;

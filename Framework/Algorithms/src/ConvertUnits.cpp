@@ -42,7 +42,7 @@ ConvertUnits::ConvertUnits()
       m_inputEvents(false), m_inputUnit(), m_outputUnit() {}
 
 /// Destructor
-ConvertUnits::~ConvertUnits() {}
+ConvertUnits::~ConvertUnits() = default;
 
 /// Initialisation method
 void ConvertUnits::init() {

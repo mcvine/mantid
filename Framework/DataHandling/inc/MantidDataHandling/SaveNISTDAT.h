@@ -26,7 +26,7 @@ public:
   /// (Empty) Constructor
   SaveNISTDAT() : API::Algorithm() {}
   /// Virtual destructor
-  ~SaveNISTDAT() override {}
+  ~SaveNISTDAT() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SaveNISTDAT"; }
   /// Summary of algorithms purpose

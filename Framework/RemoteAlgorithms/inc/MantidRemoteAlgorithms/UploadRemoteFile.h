@@ -54,7 +54,7 @@ public:
   /// (Empty) Constructor
   UploadRemoteFile() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~UploadRemoteFile() override {}
+  ~UploadRemoteFile() override = default;
   /// Algorithm's name
   const std::string name() const override { return "UploadRemoteFile"; }
   /// Summary of algorithms purpose

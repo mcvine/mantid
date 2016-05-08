@@ -65,7 +65,7 @@ public:
   /// (Empty) Constructor
   CreateCalFileByNames();
   /// Virtual destructor
-  ~CreateCalFileByNames() override {}
+  ~CreateCalFileByNames() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CreateCalFileByNames"; }
   /// Summary of algorithms purpose

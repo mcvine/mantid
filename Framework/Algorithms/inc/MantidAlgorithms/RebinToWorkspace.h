@@ -50,7 +50,7 @@ public:
   /// Constructor
   RebinToWorkspace() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~RebinToWorkspace() override {}
+  ~RebinToWorkspace() override = default;
   /// Algorithm's name
   const std::string name() const override { return "RebinToWorkspace"; }
   /// Summary of algorithms purpose

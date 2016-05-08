@@ -53,7 +53,8 @@ public:
   /// Default constructor
   PoissonErrors() : BinaryOperation(){};
   /// Destructor
-  ~PoissonErrors() override{};
+  ~PoissonErrors() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "PoissonErrors"; }
   /// Summary of algorithms purpose

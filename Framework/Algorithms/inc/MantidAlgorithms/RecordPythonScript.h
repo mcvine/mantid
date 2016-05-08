@@ -44,7 +44,7 @@ class DLLExport RecordPythonScript : public Algorithms::GeneratePythonScript,
                                      public API::AlgorithmObserver {
 public:
   RecordPythonScript();
-  ~RecordPythonScript() override {}
+  ~RecordPythonScript() override = default;
 
   /// Algorithm's name for identification
   const std::string name() const override { return "RecordPythonScript"; };

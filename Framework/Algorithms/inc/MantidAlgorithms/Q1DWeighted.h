@@ -50,7 +50,7 @@ public:
   /// (Empty) Constructor
   Q1DWeighted() : API::Algorithm() {}
   /// Virtual destructor
-  ~Q1DWeighted() override {}
+  ~Q1DWeighted() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Q1DWeighted"; }
   /// Summary of algorithms purpose

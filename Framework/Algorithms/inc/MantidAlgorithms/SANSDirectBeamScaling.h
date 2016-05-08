@@ -42,7 +42,7 @@ public:
   /// (Empty) Constructor
   SANSDirectBeamScaling() : API::Algorithm() { deprecatedDate("2014-06-12"); }
   /// Virtual destructor
-  ~SANSDirectBeamScaling() override {}
+  ~SANSDirectBeamScaling() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SANSDirectBeamScaling"; }
   /// Summary of algorithms purpose

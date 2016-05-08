@@ -49,7 +49,8 @@ public:
   /// Default constructor
   Divide() : BinaryOperation(), m_warnOnZeroDivide(true){};
   /// Destructor
-  ~Divide() override{};
+  ~Divide() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Divide"; }
   /// Summary of algorithms purpose

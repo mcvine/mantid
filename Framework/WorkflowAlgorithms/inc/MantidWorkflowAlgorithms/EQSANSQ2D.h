@@ -23,7 +23,7 @@ public:
   /// (Empty) Constructor
   EQSANSQ2D() : API::Algorithm() {}
   /// Virtual destructor
-  ~EQSANSQ2D() override {}
+  ~EQSANSQ2D() override = default;
   /// Algorithm's name
   const std::string name() const override { return "EQSANSQ2D"; }
   /// Summary of algorithms purpose

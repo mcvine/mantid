@@ -52,7 +52,7 @@ public:
   SaveNexus();
 
   /// Destructor
-  ~SaveNexus() override {}
+  ~SaveNexus() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveNexus"; };
   /// Summary of algorithms purpose

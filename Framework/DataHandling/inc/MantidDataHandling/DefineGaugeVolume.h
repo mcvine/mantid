@@ -43,7 +43,7 @@ public:
   /// (Empty) Constructor
   DefineGaugeVolume() : API::Algorithm() {}
   /// Virtual destructor
-  ~DefineGaugeVolume() override {}
+  ~DefineGaugeVolume() override = default;
   /// Algorithm's name
   const std::string name() const override { return "DefineGaugeVolume"; }
   /// Summary of algorithms purpose

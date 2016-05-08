@@ -44,7 +44,7 @@ public:
   /// Constructor
   SaveSPE();
   /// Virtual destructor
-  ~SaveSPE() override {}
+  ~SaveSPE() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SaveSPE"; }
   /// Summary of algorithms purpose

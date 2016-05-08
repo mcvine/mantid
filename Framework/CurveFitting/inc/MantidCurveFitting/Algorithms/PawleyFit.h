@@ -67,7 +67,7 @@ protected:
 class DLLExport PawleyFit : public API::Algorithm {
 public:
   PawleyFit();
-  ~PawleyFit() override {}
+  ~PawleyFit() override = default;
 
   const std::string name() const override { return "PawleyFit"; }
   int version() const override { return 1; }

@@ -37,7 +37,7 @@ public:
   /// (Empty) Constructor
   ProjectMD() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~ProjectMD() override {}
+  ~ProjectMD() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ProjectMD"; }
   /// Summary of algorithms purpose

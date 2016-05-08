@@ -50,7 +50,7 @@ public:
   /// (Empty) Constructor
   ConvertTableToMatrixWorkspace() : API::Algorithm() {}
   /// Virtual destructor
-  ~ConvertTableToMatrixWorkspace() override {}
+  ~ConvertTableToMatrixWorkspace() override = default;
   /// Algorithm's name
   const std::string name() const override {
     return "ConvertTableToMatrixWorkspace";

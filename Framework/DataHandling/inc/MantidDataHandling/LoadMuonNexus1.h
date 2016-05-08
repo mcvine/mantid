@@ -74,7 +74,7 @@ public:
   /// Default constructor
   LoadMuonNexus1();
   /// Destructor
-  ~LoadMuonNexus1() override {}
+  ~LoadMuonNexus1() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadMuonNexus"; }
   /// Summary of algorithms purpose

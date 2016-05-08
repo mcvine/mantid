@@ -74,7 +74,7 @@ class DLLExport LoadBBY : public API::IFileLoader<Kernel::FileDescriptor> {
 public:
   // construction
   LoadBBY() {}
-  ~LoadBBY() override {}
+  ~LoadBBY() override = default;
 
   // description
   int version() const override { return 1; }

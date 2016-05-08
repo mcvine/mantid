@@ -42,7 +42,7 @@ public:
   /// (Empty) Constructor
   LoadQKK() {}
   /// Virtual destructor
-  ~LoadQKK() override {}
+  ~LoadQKK() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadQKK"; }
   /// Summary of algorithms purpose

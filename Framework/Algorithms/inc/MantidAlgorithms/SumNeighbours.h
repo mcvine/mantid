@@ -45,7 +45,8 @@ public:
   /// Default constructor
   SumNeighbours() : API::Algorithm(){};
   /// Destructor
-  ~SumNeighbours() override{};
+  ~SumNeighbours() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SumNeighbours"; }
   /// Summary of algorithms purpose

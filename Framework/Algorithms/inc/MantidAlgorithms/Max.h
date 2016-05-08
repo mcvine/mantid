@@ -57,7 +57,8 @@ public:
   /// Default constructor
   Max() : API::Algorithm(){};
   /// Destructor
-  ~Max() override{};
+  ~Max() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Max"; }
   /// Algorithm's version for identification overriding a virtual method

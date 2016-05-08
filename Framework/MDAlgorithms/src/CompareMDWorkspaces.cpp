@@ -20,7 +20,7 @@ class CompareFailsException : public std::runtime_error {
 public:
   explicit CompareFailsException(const std::string &msg)
       : std::runtime_error(msg) {}
-  ~CompareFailsException() throw() override {}
+  ~CompareFailsException() throw() override = default;
   std::string getMessage() const { return this->what(); }
 };
 
@@ -40,7 +40,7 @@ CompareMDWorkspaces::CompareMDWorkspaces()
 //----------------------------------------------------------------------------------------------
 /** Destructor
 */
-CompareMDWorkspaces::~CompareMDWorkspaces() {}
+CompareMDWorkspaces::~CompareMDWorkspaces() = default;
 
 //----------------------------------------------------------------------------------------------
 /// Algorithm's name for identification. @see Algorithm::name

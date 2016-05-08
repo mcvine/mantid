@@ -65,7 +65,7 @@ public:
   /// Constructor
   SaveGSS();
   /// Virtual destructor
-  ~SaveGSS() override {}
+  ~SaveGSS() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SaveGSS"; }
   /// Summary of algorithms purpose

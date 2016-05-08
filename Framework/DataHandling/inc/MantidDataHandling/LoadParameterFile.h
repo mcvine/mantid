@@ -74,7 +74,7 @@ public:
   LoadParameterFile();
 
   /// Destructor
-  ~LoadParameterFile() override {}
+  ~LoadParameterFile() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadParameterFile"; };
   /// Summary of algorithms purpose

@@ -35,7 +35,7 @@ public:
   /// (Empty) Constructor
   SubmitRemoteJob2() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~SubmitRemoteJob2() override {}
+  ~SubmitRemoteJob2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SubmitRemoteJob"; }
   /// Summary of algorithms purpose

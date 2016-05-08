@@ -57,7 +57,8 @@ public:
   /// Default constructor
   Min() : API::Algorithm(){};
   /// Destructor
-  ~Min() override{};
+  ~Min() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Min"; }
   /// Algorithm's version for identification overriding a virtual method

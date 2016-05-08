@@ -19,7 +19,7 @@ public:
   /// (Empty) Constructor
   SANSBeamFluxCorrection() : API::DataProcessorAlgorithm() {}
   /// Virtual destructor
-  ~SANSBeamFluxCorrection() override {}
+  ~SANSBeamFluxCorrection() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SANSBeamFluxCorrection"; }
   /// Summary of algorithms purpose

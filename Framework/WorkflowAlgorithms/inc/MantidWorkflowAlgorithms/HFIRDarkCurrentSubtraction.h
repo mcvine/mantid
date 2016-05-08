@@ -37,7 +37,7 @@ public:
   /// (Empty) Constructor
   HFIRDarkCurrentSubtraction() : API::Algorithm() {}
   /// Virtual destructor
-  ~HFIRDarkCurrentSubtraction() override {}
+  ~HFIRDarkCurrentSubtraction() override = default;
   /// Algorithm's name
   const std::string name() const override {
     return "HFIRDarkCurrentSubtraction";

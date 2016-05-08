@@ -55,7 +55,7 @@ public:
   /// (Empty) Constructor
   Qxy() : API::Algorithm() {}
   /// Virtual destructor
-  ~Qxy() override {}
+  ~Qxy() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Qxy"; }
   /// Summary of algorithms purpose

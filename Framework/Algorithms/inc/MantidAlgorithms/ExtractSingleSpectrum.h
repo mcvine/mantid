@@ -48,7 +48,7 @@ public:
   /// (Empty) Constructor
   ExtractSingleSpectrum() : API::Algorithm() {}
   /// Virtual destructor
-  ~ExtractSingleSpectrum() override {}
+  ~ExtractSingleSpectrum() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ExtractSingleSpectrum"; }
   /// Summary of algorithms purpose

@@ -41,7 +41,7 @@ public:
   /// Constructor
   SetupILLD33Reduction() : API::Algorithm() {}
   /// Virtual destructor
-  ~SetupILLD33Reduction() override {}
+  ~SetupILLD33Reduction() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SetupILLD33Reduction"; }
   /// Summary of algorithms purpose

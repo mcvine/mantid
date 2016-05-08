@@ -194,7 +194,8 @@ public:
   /// Default constructor
   FindSXPeaks();
   /// Destructor
-  ~FindSXPeaks() override{};
+  ~FindSXPeaks() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "FindSXPeaks"; }
   /// Summary of algorithms purpose

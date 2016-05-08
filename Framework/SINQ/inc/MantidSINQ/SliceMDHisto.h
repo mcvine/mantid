@@ -38,7 +38,7 @@ public:
   /// Default constructor
   SliceMDHisto();
   /// Virtual destructor
-  ~SliceMDHisto() override {}
+  ~SliceMDHisto() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SliceMDHisto"; }
   /// Summary of algorithms purpose

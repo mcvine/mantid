@@ -22,7 +22,7 @@ public:
   /** Constructor   */
   ConvertToDiffractionMDWorkspace2() {}
   /** Destructor   */
-  ~ConvertToDiffractionMDWorkspace2() override {}
+  ~ConvertToDiffractionMDWorkspace2() override = default;
 
   /// Algorithm's name for identification
   const std::string name() const override {

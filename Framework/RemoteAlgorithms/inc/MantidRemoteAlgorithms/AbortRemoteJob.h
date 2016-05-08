@@ -11,7 +11,7 @@ public:
   /// (Empty) Constructor
   AbortRemoteJob() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~AbortRemoteJob() override {}
+  ~AbortRemoteJob() override = default;
   /// Algorithm's name
   const std::string name() const override { return "AbortRemoteJob"; }
   /// Summary of algorithms purpose

@@ -49,7 +49,8 @@ public:
   /// Default constructor
   Minus() : BinaryOperation(){};
   /// Destructor
-  ~Minus() override{};
+  ~Minus() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Minus"; }
   /// Summary of algorithms purpose

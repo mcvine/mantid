@@ -54,7 +54,8 @@ public:
   /// Default constructor
   AsymmetryCalc() : API::Algorithm(){};
   /// Destructor
-  ~AsymmetryCalc() override{};
+  ~AsymmetryCalc() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "AsymmetryCalc"; }
   /// Summary of algorithms purpose

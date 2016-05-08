@@ -40,7 +40,8 @@ public:
   /// Default constructor
   FFTSmooth2() : API::Algorithm(){};
   /// Destructor
-  ~FFTSmooth2() override{};
+  ~FFTSmooth2() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "FFTSmooth"; }
   /// Summary of algorithms purpose

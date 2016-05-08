@@ -61,7 +61,7 @@ public:
   /// (Empty) Constructor
   CreateDummyCalFile();
   /// Virtual destructor
-  ~CreateDummyCalFile() override {}
+  ~CreateDummyCalFile() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CreateDummyCalFile"; }
   /// Summary of algorithms purpose

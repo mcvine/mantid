@@ -46,7 +46,7 @@ public:
   /// (Empty) Constructor
   SavePHX() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~SavePHX() override {}
+  ~SavePHX() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SavePHX"; }
   /// Summary of algorithms purpose

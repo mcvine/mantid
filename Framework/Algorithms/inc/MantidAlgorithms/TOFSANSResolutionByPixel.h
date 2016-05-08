@@ -22,7 +22,7 @@ public:
   /// Default constructor
   TOFSANSResolutionByPixel();
   /// Virtual destructor
-  ~TOFSANSResolutionByPixel() override {}
+  ~TOFSANSResolutionByPixel() override = default;
   /// Algorithm's name
   const std::string name() const override { return "TOFSANSResolutionByPixel"; }
   /// Summary of algorithms purpose

@@ -38,7 +38,7 @@ public:
   /// (Empty) Constructor
   InvertMDDim() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~InvertMDDim() override {}
+  ~InvertMDDim() override = default;
   /// Algorithm's name
   const std::string name() const override { return "InvertMDDim"; }
   /// Summary of algorithms purpose

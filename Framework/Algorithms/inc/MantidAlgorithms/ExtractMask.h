@@ -52,7 +52,7 @@ public:
   /// Constructor
   ExtractMask() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~ExtractMask() override {}
+  ~ExtractMask() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ExtractMask"; }
   /// Summary of algorithms purpose

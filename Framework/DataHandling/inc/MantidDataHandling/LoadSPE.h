@@ -46,7 +46,7 @@ public:
   /// Constructor
   LoadSPE() : API::IFileLoader<Kernel::FileDescriptor>() {}
   /// Virtual destructor
-  ~LoadSPE() override {}
+  ~LoadSPE() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadSPE"; }
   /// Summary of algorithms purpose

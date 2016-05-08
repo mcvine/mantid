@@ -47,7 +47,7 @@ public:
   /// (Empty) Constructor
   CorrectToFile() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~CorrectToFile() override {}
+  ~CorrectToFile() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CorrectToFile"; }
   /// Summary of algorithms purpose

@@ -63,7 +63,8 @@ public:
   /// Default constructor
   Fit1D() : API::Algorithm(){};
   /// Destructor
-  ~Fit1D() override{};
+  ~Fit1D() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Fit1D"; }
   /// Algorithm's version for identification overriding a virtual method

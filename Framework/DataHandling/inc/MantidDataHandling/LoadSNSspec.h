@@ -48,7 +48,7 @@ Code Documentation is available at: <http://doxygen.mantidproject.org>
 class DLLExport LoadSNSspec : public API::IFileLoader<Kernel::FileDescriptor> {
 public:
   LoadSNSspec();
-  ~LoadSNSspec() override {}
+  ~LoadSNSspec() override = default;
   const std::string name() const override { return "LoadSNSspec"; }
   /// Summary of algorithms purpose
   const std::string summary() const override {

@@ -50,7 +50,7 @@ public:
   /// (Empty) Constructor
   Transpose() : API::Algorithm() {}
   /// Virtual destructor
-  ~Transpose() override {}
+  ~Transpose() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Transpose"; }
   /// Summary of algorithms purpose

@@ -40,7 +40,7 @@ public:
   /// Default constructor
   MDHistoToWorkspace2D();
   /// Virtual destructor
-  ~MDHistoToWorkspace2D() override {}
+  ~MDHistoToWorkspace2D() override = default;
   /// Algorithm's name
   const std::string name() const override { return "MDHistoToWorkspace2D"; }
   /// Summary of algorithms purpose

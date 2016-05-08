@@ -55,7 +55,7 @@ public:
   /// (Empty) Constructor
   LoadFlexiNexus() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~LoadFlexiNexus() override {}
+  ~LoadFlexiNexus() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadFlexiNexus"; }
   /// Summary of algorithms purpose

@@ -57,7 +57,7 @@ public:
   /// (Empty) Constructor
   SmoothData() : API::Algorithm() {}
   /// Virtual destructor
-  ~SmoothData() override {}
+  ~SmoothData() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SmoothData"; }
   /// Summary of algorithms purpose

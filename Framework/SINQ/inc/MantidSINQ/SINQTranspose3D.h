@@ -44,7 +44,7 @@ public:
   /// (Empty) Constructor
   SINQTranspose3D() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~SINQTranspose3D() override {}
+  ~SINQTranspose3D() override = default;
   /// Algorithm's name
   const std::string name() const override { return "Transpose3D"; }
   /// Summary of algorithms purpose

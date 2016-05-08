@@ -45,7 +45,7 @@ public:
   /// (Empty) Constructor
   ConvertFromDistribution() : API::Algorithm() {}
   /// Virtual destructor
-  ~ConvertFromDistribution() override {}
+  ~ConvertFromDistribution() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ConvertFromDistribution"; }
   /// Summary of algorithms purpose

@@ -64,7 +64,7 @@ public:
   /// Constructor
   SaveFocusedXYE();
   /// Virtual destructor
-  ~SaveFocusedXYE() override {}
+  ~SaveFocusedXYE() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SaveFocusedXYE"; }
   /// Summary of algorithms purpose

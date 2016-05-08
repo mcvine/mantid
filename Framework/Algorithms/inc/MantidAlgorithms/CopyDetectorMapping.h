@@ -41,7 +41,7 @@ public:
   /// (Empty) Constructor
   CopyDetectorMapping() : API::Algorithm() {}
   /// Virtual destructor
-  ~CopyDetectorMapping() override {}
+  ~CopyDetectorMapping() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CopyDetectorMapping"; }
   /// Summary of algorithms purpose

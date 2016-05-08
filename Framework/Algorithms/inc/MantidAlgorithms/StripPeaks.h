@@ -58,7 +58,7 @@ public:
   /// (Empty) Constructor
   StripPeaks();
   /// Virtual destructor
-  ~StripPeaks() override {}
+  ~StripPeaks() override = default;
   /// Algorithm's name
   const std::string name() const override { return "StripPeaks"; }
   /// Summary of algorithms purpose

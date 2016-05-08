@@ -47,7 +47,7 @@ public:
   /// (Empty) Constructor
   ConvertToMatrixWorkspace() : API::Algorithm() {}
   /// Virtual destructor
-  ~ConvertToMatrixWorkspace() override {}
+  ~ConvertToMatrixWorkspace() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ConvertToMatrixWorkspace"; }
 

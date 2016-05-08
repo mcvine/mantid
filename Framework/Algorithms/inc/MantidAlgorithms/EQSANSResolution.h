@@ -38,7 +38,7 @@ public:
   /// (Empty) Constructor
   EQSANSResolution() : Algorithms::TOFSANSResolution() {}
   /// Virtual destructor
-  ~EQSANSResolution() override {}
+  ~EQSANSResolution() override = default;
   /// Algorithm's name
   const std::string name() const override { return "EQSANSResolution"; }
   /// Summary of algorithms purpose

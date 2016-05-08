@@ -56,7 +56,8 @@ public:
   /// Default constructor
   OneMinusExponentialCor();
   /// Destructor
-  ~OneMinusExponentialCor() override{};
+  ~OneMinusExponentialCor() override = default;
+  ;
   /// Algorithm's name for identification
   const std::string name() const override { return "OneMinusExponentialCor"; }
   /// Summary of algorithms purpose

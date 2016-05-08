@@ -68,7 +68,7 @@ public:
   LoadInstrumentFromRaw();
 
   /// Destructor
-  ~LoadInstrumentFromRaw() override {}
+  ~LoadInstrumentFromRaw() override = default;
 
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadInstrumentFromRaw"; };

@@ -76,7 +76,7 @@ public:
   /// (Empty) Constructor
   ReadGroupsFromFile();
   /// Virtual destructor
-  ~ReadGroupsFromFile() override {}
+  ~ReadGroupsFromFile() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ReadGroupsFromFile"; }
   /// Summary of algorithms purpose

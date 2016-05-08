@@ -44,7 +44,8 @@ public:
   /// Default constructor
   UnGroupWorkspace() : API::Algorithm(){};
   /// Destructor
-  ~UnGroupWorkspace() override{};
+  ~UnGroupWorkspace() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "UnGroupWorkspace"; }
   /// Summary of algorithms purpose

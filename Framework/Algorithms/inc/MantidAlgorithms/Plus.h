@@ -51,7 +51,8 @@ public:
   /// Default constructor
   Plus() : CommutativeBinaryOperation(){};
   /// Destructor
-  ~Plus() override{};
+  ~Plus() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Plus"; }
   /// Summary of algorithms purpose

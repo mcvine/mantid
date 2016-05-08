@@ -38,7 +38,7 @@ Property::Property(const Property &right)
 }
 
 /// Virtual destructor
-Property::~Property() {}
+Property::~Property() = default;
 
 /** Get the property's name
  *  @return The name of the property

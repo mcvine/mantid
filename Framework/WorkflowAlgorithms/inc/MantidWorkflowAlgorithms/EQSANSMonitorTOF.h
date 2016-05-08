@@ -53,7 +53,7 @@ public:
   /// (Empty) Constructor
   EQSANSMonitorTOF() : API::Algorithm() {}
   /// Virtual destructor
-  ~EQSANSMonitorTOF() override {}
+  ~EQSANSMonitorTOF() override = default;
   /// Algorithm's name
   const std::string name() const override { return "EQSANSMonitorTOF"; }
   /// Summary of algorithms purpose

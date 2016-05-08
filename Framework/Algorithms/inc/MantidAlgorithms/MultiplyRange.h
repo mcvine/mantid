@@ -49,7 +49,7 @@ public:
   /// no arg constructor
   MultiplyRange() : API::Algorithm() {}
   /// virtual destructor
-  ~MultiplyRange() override {}
+  ~MultiplyRange() override = default;
 
   const std::string name() const override { return "MultiplyRange"; }
   /// Summary of algorithms purpose

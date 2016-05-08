@@ -43,7 +43,7 @@ public:
   /// Default constructor
   SaveReflCustomAscii() {}
   /// Destructor
-  ~SaveReflCustomAscii() override {}
+  ~SaveReflCustomAscii() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveReflCustomAscii"; }
   /// Summary of algorithms purpose

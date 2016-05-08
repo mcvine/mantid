@@ -39,7 +39,7 @@ public:
   /// (Empty) Constructor
   CreateLogPropertyTable() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~CreateLogPropertyTable() override {}
+  ~CreateLogPropertyTable() override = default;
 
   /// Algorithm's name for identification
   const std::string name() const override { return "CreateLogPropertyTable"; };

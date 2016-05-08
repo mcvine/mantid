@@ -48,7 +48,7 @@ namespace Poldi {
 class DLLExport PoldiTruncateData : public API::Algorithm {
 public:
   PoldiTruncateData();
-  ~PoldiTruncateData() override {}
+  ~PoldiTruncateData() override = default;
 
   const std::string name() const override { return "PoldiTruncateData"; }
   int version() const override;

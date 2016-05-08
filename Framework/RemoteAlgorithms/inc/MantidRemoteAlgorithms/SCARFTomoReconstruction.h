@@ -43,7 +43,7 @@ public:
   /// Constructor
   SCARFTomoReconstruction();
   /// Virtual destructor
-  ~SCARFTomoReconstruction() override {}
+  ~SCARFTomoReconstruction() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SCARFTomoReconstruction"; }
   /// Summary of algorithms purpose

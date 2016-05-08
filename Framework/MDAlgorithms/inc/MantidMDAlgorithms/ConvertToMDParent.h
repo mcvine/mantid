@@ -48,7 +48,7 @@ namespace MDAlgorithms {
 class DLLExport ConvertToMDParent : public BoxControllerSettingsAlgorithm {
 public:
   ConvertToMDParent() {}
-  ~ConvertToMDParent() override {}
+  ~ConvertToMDParent() override = default;
 
   /// Algorithm's name for identification
   const std::string name() const override = 0;

@@ -49,7 +49,8 @@ public:
   /// Default constructor
   Regroup() : API::Algorithm(){};
   /// Destructor
-  ~Regroup() override{};
+  ~Regroup() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Regroup"; }
   /// Summary of algorithms purpose

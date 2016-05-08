@@ -41,7 +41,7 @@ public:
   /// Constructor
   SetupEQSANSReduction() : API::Algorithm() {}
   /// Virtual destructor
-  ~SetupEQSANSReduction() override {}
+  ~SetupEQSANSReduction() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SetupEQSANSReduction"; }
   /// Summary of algorithms purpose

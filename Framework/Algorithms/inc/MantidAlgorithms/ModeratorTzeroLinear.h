@@ -83,7 +83,7 @@ public:
   /// Default constructor
   ModeratorTzeroLinear();
   /// Virtual destructor
-  ~ModeratorTzeroLinear() override {}
+  ~ModeratorTzeroLinear() override = default;
   /// Algorithm's name
   const std::string name() const override;
   /// Summary of algorithms purpose

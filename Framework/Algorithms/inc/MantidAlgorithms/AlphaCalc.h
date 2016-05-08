@@ -51,7 +51,8 @@ public:
   /// Default constructor
   AlphaCalc() : API::Algorithm(){};
   /// Destructor
-  ~AlphaCalc() override{};
+  ~AlphaCalc() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "AlphaCalc"; }
   /// Summary of algorithms purpose

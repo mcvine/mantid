@@ -43,7 +43,7 @@ public:
   /// (Empty) Constructor
   CreateSampleShape() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~CreateSampleShape() override {}
+  ~CreateSampleShape() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CreateSampleShape"; }
   /// Summary of algorithms purpose

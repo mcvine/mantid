@@ -23,7 +23,7 @@ using namespace DataObjects;
 CompressEvents::CompressEvents() {}
 
 /// Destructor
-CompressEvents::~CompressEvents() {}
+CompressEvents::~CompressEvents() = default;
 
 void CompressEvents::init() {
   declareProperty(

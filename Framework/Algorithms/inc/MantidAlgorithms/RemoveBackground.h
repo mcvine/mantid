@@ -105,7 +105,8 @@ public:
   /// Default constructor
   RemoveBackground() : API::Algorithm(), m_BackgroundHelper(){};
   /// Destructor
-  ~RemoveBackground() override{};
+  ~RemoveBackground() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "RemoveBackground"; }
   /// Summary of algorithms purpose

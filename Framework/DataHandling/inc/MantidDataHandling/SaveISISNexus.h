@@ -54,7 +54,7 @@ public:
   SaveISISNexus();
 
   /// Destructor
-  ~SaveISISNexus() override {}
+  ~SaveISISNexus() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveISISNexus"; };
   /// Summary of algorithms purpose

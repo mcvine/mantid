@@ -91,7 +91,7 @@ public:
   /// (Empty) Constructor
   CylinderAbsorption();
   /// Virtual destructor
-  ~CylinderAbsorption() override {}
+  ~CylinderAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override { return "CylinderAbsorption"; }
   /// Summary of algorithms purpose

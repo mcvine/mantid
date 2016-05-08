@@ -35,7 +35,7 @@ public:
   /// (Empty) Constructor
   StartRemoteTransaction2() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~StartRemoteTransaction2() override {}
+  ~StartRemoteTransaction2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "StartRemoteTransaction"; }
   /// Summary of algorithms purpose

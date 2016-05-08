@@ -44,7 +44,7 @@ public:
   /// (Empty) Constructor
   FindCenterOfMassPosition2() : API::Algorithm() {}
   /// Virtual destructor
-  ~FindCenterOfMassPosition2() override {}
+  ~FindCenterOfMassPosition2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "FindCenterOfMassPosition"; }
   /// Summary of algorithms purpose

@@ -59,7 +59,7 @@ public:
   LoadMuonLog();
 
   /// Destructor
-  ~LoadMuonLog() override {}
+  ~LoadMuonLog() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadMuonLog"; };
   /// Summary of algorithms purpose

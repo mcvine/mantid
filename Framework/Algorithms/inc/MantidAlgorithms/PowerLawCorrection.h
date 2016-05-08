@@ -52,7 +52,8 @@ public:
   /// Default constructor
   PowerLawCorrection();
   /// Destructor
-  ~PowerLawCorrection() override{};
+  ~PowerLawCorrection() override = default;
+  ;
   /// Algorithm's name for identification
   const std::string name() const override { return "PowerLawCorrection"; }
   /// Summary of algorithms purpose

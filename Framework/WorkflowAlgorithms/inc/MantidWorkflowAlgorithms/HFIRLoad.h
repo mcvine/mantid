@@ -48,7 +48,7 @@ public:
   /// Constructor
   HFIRLoad() : API::Algorithm() {}
   /// Virtual destructor
-  ~HFIRLoad() override {}
+  ~HFIRLoad() override = default;
   /// Algorithm's name
   const std::string name() const override { return "HFIRLoad"; }
   /// Summary of algorithms purpose

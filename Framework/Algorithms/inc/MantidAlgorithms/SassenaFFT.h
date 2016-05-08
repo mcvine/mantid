@@ -43,7 +43,7 @@ public:
         m_T2ueV(1000.0 / Mantid::PhysicalConstants::meVtoKelvin),
         m_ps2meV(4.136) {}
   /// Destructor
-  ~SassenaFFT() override {}
+  ~SassenaFFT() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SassenaFFT"; }
   /// Summary of algorithms purpose

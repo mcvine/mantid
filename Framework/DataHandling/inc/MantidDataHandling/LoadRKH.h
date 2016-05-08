@@ -50,7 +50,7 @@ public:
   /// Constructor
   LoadRKH() : m_unitKeys(), m_RKHKeys() {}
   /// Virtual destructor
-  ~LoadRKH() override {}
+  ~LoadRKH() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadRKH"; }
   /// Summary of algorithms purpose

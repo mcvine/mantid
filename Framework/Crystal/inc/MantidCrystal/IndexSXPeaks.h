@@ -156,7 +156,8 @@ public:
   /// Default constructor
   IndexSXPeaks() : API::Algorithm(){};
   /// Destructor
-  ~IndexSXPeaks() override{};
+  ~IndexSXPeaks() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "IndexSXPeaks"; }
   /// Summary of algorithms purpose

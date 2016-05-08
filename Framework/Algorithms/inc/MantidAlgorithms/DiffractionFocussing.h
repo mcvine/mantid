@@ -68,7 +68,8 @@ public:
   /// Constructor
   DiffractionFocussing();
   /// Destructor
-  ~DiffractionFocussing() override{};
+  ~DiffractionFocussing() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "DiffractionFocussing"; }
   /// Summary of algorithms purpose

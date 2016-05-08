@@ -73,7 +73,8 @@ public:
   /// constructor
   MedianDetectorTest();
   /// Destructor
-  ~MedianDetectorTest() override{};
+  ~MedianDetectorTest() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "MedianDetectorTest"; }
   const std::string category() const override;

@@ -44,7 +44,8 @@ public:
   /// Default constructor
   CommutativeBinaryOperation() : BinaryOperation(){};
   /// Destructor
-  ~CommutativeBinaryOperation() override{};
+  ~CommutativeBinaryOperation() override = default;
+  ;
 
 protected:
   // Overridden BinaryOperation method

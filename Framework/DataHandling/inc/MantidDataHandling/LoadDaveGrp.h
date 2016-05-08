@@ -48,7 +48,7 @@ public:
   /// Constructor
   LoadDaveGrp();
   /// Virtual destructor
-  ~LoadDaveGrp() override {}
+  ~LoadDaveGrp() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadDaveGrp"; }
   /// Summary of algorithms purpose

@@ -35,7 +35,7 @@ public:
   /// (Empty) Constructor
   DownloadRemoteFile2() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~DownloadRemoteFile2() override {}
+  ~DownloadRemoteFile2() override = default;
   /// Algorithm's name
   const std::string name() const override { return "DownloadRemoteFile"; }
   /// Summary of algorithms purpose

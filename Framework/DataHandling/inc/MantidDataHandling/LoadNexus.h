@@ -61,7 +61,7 @@ public:
   LoadNexus();
 
   /// Destructor
-  ~LoadNexus() override {}
+  ~LoadNexus() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadNexus"; };
   /// Summary of algorithms purpose

@@ -66,7 +66,7 @@ public:
   /// (Empty) Constructor
   SumRowColumn() : API::Algorithm() {}
   /// Virtual destructor
-  ~SumRowColumn() override {}
+  ~SumRowColumn() override = default;
   /// Algorithm's name
   const std::string name() const override { return "SumRowColumn"; }
   /// Summary of algorithms purpose

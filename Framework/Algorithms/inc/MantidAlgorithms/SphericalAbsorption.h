@@ -83,7 +83,7 @@ public:
   /// (Empty) Constructor
   SphericalAbsorption();
   /// Virtual destructor
-  ~SphericalAbsorption() override {}
+  ~SphericalAbsorption() override = default;
   /// Algorithm's category for identification
   const std::string category() const override {
     return "CorrectionFunctions\\AbsorptionCorrections";

@@ -35,7 +35,8 @@ namespace DataHandling {
 class DLLExport RotateSource : public API::Algorithm {
 public:
   RotateSource(){};
-  ~RotateSource() override{};
+  ~RotateSource() override = default;
+  ;
 
   const std::string name() const override { return "RotateSource"; };
   int version() const override { return 1; };

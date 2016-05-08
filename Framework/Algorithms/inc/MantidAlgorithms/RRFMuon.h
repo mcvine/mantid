@@ -39,7 +39,8 @@ public:
   /// Default constructor
   RRFMuon(){};
   /// Destructor
-  ~RRFMuon() override{};
+  ~RRFMuon() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "RRFMuon"; }
   /// Summary of algorithm's purpose

@@ -57,7 +57,8 @@ public:
   /// Default constructor
   Rebin() : API::Algorithm(){};
   /// Destructor
-  ~Rebin() override{};
+  ~Rebin() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Rebin"; }
   /// Summary of algorithms purpose

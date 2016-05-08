@@ -42,7 +42,7 @@ public:
   /// Default constructor
   SaveAscii();
   /// Destructor
-  ~SaveAscii() override {}
+  ~SaveAscii() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SaveAscii"; }
   /// Summary of algorithms purpose

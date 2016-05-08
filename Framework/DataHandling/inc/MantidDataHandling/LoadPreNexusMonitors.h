@@ -38,7 +38,7 @@ public:
   /// (Empty) Constructor
   LoadPreNexusMonitors();
   /// Virtual destructor
-  ~LoadPreNexusMonitors() override {}
+  ~LoadPreNexusMonitors() override = default;
   /// Algorithm's name
   const std::string name() const override { return "LoadPreNexusMonitors"; }
   /// Summary of algorithms purpose

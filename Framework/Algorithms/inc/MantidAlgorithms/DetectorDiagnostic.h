@@ -47,7 +47,8 @@ public:
   /// Default constructor
   DetectorDiagnostic();
   /// Virtual destructor
-  ~DetectorDiagnostic() override{};
+  ~DetectorDiagnostic() override = default;
+  ;
 
   /// Algorithm's category for identification
   const std::string category() const override;

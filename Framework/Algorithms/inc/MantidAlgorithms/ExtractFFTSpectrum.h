@@ -46,7 +46,7 @@ public:
   /// (Empty) Constructor
   ExtractFFTSpectrum() : API::Algorithm() {}
   /// Virtual destructor
-  ~ExtractFFTSpectrum() override {}
+  ~ExtractFFTSpectrum() override = default;
   /// Algorithm's name
   const std::string name() const override { return "ExtractFFTSpectrum"; }
   /// Summary of algorithms purpose

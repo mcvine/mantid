@@ -38,7 +38,7 @@ public:
   /// (Empty) Constructor
   FFTDerivative() : Mantid::API::Algorithm() {}
   /// Virtual destructor
-  ~FFTDerivative() override {}
+  ~FFTDerivative() override = default;
   /// Algorithm's name
   const std::string name() const override { return "FFTDerivative"; }
   /// Summary of algorithms purpose

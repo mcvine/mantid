@@ -46,7 +46,7 @@ public:
   /// (Empty) Constructor
   CuboidGaugeVolumeAbsorption();
   /// Virtual destructor
-  ~CuboidGaugeVolumeAbsorption() override {}
+  ~CuboidGaugeVolumeAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override {
     return "CuboidGaugeVolumeAbsorption";

@@ -69,7 +69,8 @@ public:
   /// Default constructor
   FindDeadDetectors() : API::Algorithm(){};
   /// Destructor
-  ~FindDeadDetectors() override{};
+  ~FindDeadDetectors() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "FindDeadDetectors"; }
   /// Summary of algorithms purpose

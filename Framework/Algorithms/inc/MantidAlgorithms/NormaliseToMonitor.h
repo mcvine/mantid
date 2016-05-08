@@ -150,7 +150,8 @@ public:
   IPropertySettings *clone() override {
     return new MonIDPropChanger(hostWSname, SpectraNum, MonitorWorkspaceProp);
   }
-  ~MonIDPropChanger() override{};
+  ~MonIDPropChanger() override = default;
+  ;
 
 private:
   // the name of the property, which specifies the workspace which has to be

@@ -56,7 +56,7 @@ public:
   /// Default constructor
   ReplaceSpecialValues();
   /// Destructor
-  ~ReplaceSpecialValues() override {}
+  ~ReplaceSpecialValues() override = default;
   /// Algorithm's name for identification
   const std::string name() const override { return "ReplaceSpecialValues"; }
   /// Summary of algorithms purpose

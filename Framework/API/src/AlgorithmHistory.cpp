@@ -43,7 +43,7 @@ AlgorithmHistory::AlgorithmHistory()
       m_childHistories(boost::bind(CompareHistory::compare, _1, _2)) {}
 
 /// Destructor
-AlgorithmHistory::~AlgorithmHistory() {}
+AlgorithmHistory::~AlgorithmHistory() = default;
 
 /**
     Construct AlgorithmHistory by name. Can be used for rstoring the history

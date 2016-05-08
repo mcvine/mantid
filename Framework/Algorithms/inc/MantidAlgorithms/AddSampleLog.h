@@ -49,7 +49,7 @@ public:
   /// (Empty) Constructor
   AddSampleLog() : API::Algorithm() {}
   /// Virtual destructor
-  ~AddSampleLog() override {}
+  ~AddSampleLog() override = default;
   /// Algorithm's name
   const std::string name() const override { return "AddSampleLog"; }
   /// Summary of algorithms purpose

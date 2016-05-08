@@ -56,7 +56,8 @@ public:
   /// Default constructor
   Rebunch() : API::Algorithm(){};
   /// Destructor
-  ~Rebunch() override{};
+  ~Rebunch() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "Rebunch"; }
   /// Summary of algorithms purpose

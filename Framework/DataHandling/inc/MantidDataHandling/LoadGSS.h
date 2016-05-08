@@ -42,7 +42,7 @@ public:
 
   /// Virtual destructor
 
-  ~LoadGSS() override {}
+  ~LoadGSS() override = default;
 
   /// Algorithm's name
   const std::string name() const override { return "LoadGSS"; }

@@ -86,7 +86,7 @@ public:
   /// (Empty) Constructor
   AnyShapeAbsorption();
   /// Virtual destructor
-  ~AnyShapeAbsorption() override {}
+  ~AnyShapeAbsorption() override = default;
   /// Algorithm's name
   const std::string name() const override { return "AbsorptionCorrection"; }
   /// Summary of algorithms purpose

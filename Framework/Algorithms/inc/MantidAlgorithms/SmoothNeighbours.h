@@ -83,7 +83,8 @@ public:
   /// Default constructor
   SmoothNeighbours();
   /// Destructor
-  ~SmoothNeighbours() override{};
+  ~SmoothNeighbours() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SmoothNeighbours"; }
   /// Summary of algorithms purpose

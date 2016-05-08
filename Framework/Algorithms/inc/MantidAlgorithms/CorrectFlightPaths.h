@@ -48,7 +48,8 @@ public:
   /// Default constructor
   CorrectFlightPaths();
   /// Destructor
-  ~CorrectFlightPaths() override{};
+  ~CorrectFlightPaths() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "CorrectFlightPaths"; }
   /// Summary of algorithms purpose

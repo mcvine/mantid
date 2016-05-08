@@ -29,7 +29,7 @@ WorkspaceHistory::WorkspaceHistory()
       m_algorithms(boost::bind(CompareHistory::compare, _1, _2)) {}
 
 /// Destructor
-WorkspaceHistory::~WorkspaceHistory() {}
+WorkspaceHistory::~WorkspaceHistory() = default;
 
 /**
   Standard Copy Constructor

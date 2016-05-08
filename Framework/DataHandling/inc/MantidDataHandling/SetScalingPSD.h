@@ -65,7 +65,7 @@ public:
   SetScalingPSD();
 
   /// Destructor
-  ~SetScalingPSD() override {}
+  ~SetScalingPSD() override = default;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "SetScalingPSD"; };
   /// Summary of algorithms purpose

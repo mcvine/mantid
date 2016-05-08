@@ -51,7 +51,8 @@ public:
   /// Default constructor
   MuonRemoveExpDecay() : API::Algorithm(){};
   /// Destructor
-  ~MuonRemoveExpDecay() override{};
+  ~MuonRemoveExpDecay() override = default;
+  ;
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "RemoveExpDecay"; }
   /// Summary of algorithms purpose

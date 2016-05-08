@@ -66,7 +66,7 @@ Code Documentation is available at: <http://doxygen.mantidproject.org>
 class DLLExport LoadFITS : public API::IFileLoader<Kernel::FileDescriptor> {
 public:
   LoadFITS();
-  ~LoadFITS() override {}
+  ~LoadFITS() override = default;
 
   /// Algorithm's name for identification overriding a virtual method
   const std::string name() const override { return "LoadFITS"; }
