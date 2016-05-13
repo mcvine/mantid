@@ -165,10 +165,10 @@ void ExtractSpectra::execHistogram() {
     if (m_commonBoundaries) {
       outputWorkspace->setX(j, newX);
       if (hasDx) {
-        auto &oldDx = m_inputWorkspace->histogram(i).dx();
-        outputWorkspace->histogram(j)
-            .setSharedDx(make_cow<HistogramData::HistogramDx>(
-                oldDx.begin() + m_minX, oldDx.begin() + m_maxX));
+        const auto &oldDx =
+            m_inputWorkspace->histogram(i).pointStandardDeviations();
+        outputWorkspace.histogram(j).setPointStandardDeviations(
+            oldDx.cbegin() + m_minX, oldDx.cbegin() + m_maxX - 1);
       }
     } else {
       // Safe to just copy whole vector 'cos can't be cropping in X if not
@@ -353,9 +353,10 @@ void ExtractSpectra::execEvent() {
       // Common bin boundaries get all set to the same value
       outEL.setX(XValues_new.cowData());
       if (hasDx) {
-        auto &oldDx = m_inputWorkspace->histogram(i).dx();
-        outEL.histogram().setBinEdgeStandardDeviations(oldDx.begin() + m_minX,
-                                                       oldDx.begin() + m_maxX);
+        const auto &oldDx =
+            m_inputWorkspace->histogram(i).pointStandardDeviations();
+        outEL.histogram().setPointStandardDeviations(
+            oldDx.cbegin() + m_minX, oldDx.cbegin() + m_maxX - 1);
       }
     }
 
