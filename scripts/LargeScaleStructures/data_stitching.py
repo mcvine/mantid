@@ -507,9 +507,7 @@ class Stitcher(object):
                 _dx = mtd[ws].dataDx(0)
                 if len(_x)==len(_y)+1:
                     xtmp = [(_x[i]+_x[i+1])/2.0 for i in range(len(_y))]
-                    dxtmp = [(_dx[i]+_dx[i+1])/2.0 for i in range(len(_y))]
                     _x = xtmp
-                    _dx = dxtmp
 
                 _x, _y, _e, _dx = self.trim_zeros(_x, _y, _e, _dx)
                 x.extend(_x)
@@ -533,7 +531,7 @@ class Stitcher(object):
         dxtmp = mtd[ws_combined].dataDx(0)
 
         # Fill out dQ
-        npts = len(x)
+        npts = len(dxtmp)
         for i in range(npts):
             dxtmp[i] = dx[i]
 
