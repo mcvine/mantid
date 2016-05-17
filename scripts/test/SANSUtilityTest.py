@@ -1163,9 +1163,9 @@ class TestGetQResolutionForMergedWorkspaces(unittest.TestCase):
         x = [1,2,3]
         e = [1,1]
         y_front = [2,2]
-        dx_front = [1.,2.,3.]
+        dx_front = [1.,2.]
         y_rear = [1.5,1.5]
-        dx_rear = [3.,2.,1.]
+        dx_rear = [3.,2.]
         front_name = "front"
         rear_name = "rear"
         result_name = "result"
@@ -1183,12 +1183,10 @@ class TestGetQResolutionForMergedWorkspaces(unittest.TestCase):
 
         dx_expected_0 = (dx_front[0]*y_front[0]*scale + dx_rear[0]*y_rear[0])/(y_front[0]*scale + y_rear[0])
         dx_expected_1 = (dx_front[1]*y_front[1]*scale + dx_rear[1]*y_rear[1])/(y_front[1]*scale + y_rear[1])
-        dx_expected_2 = dx_expected_1
         dx_result = result.readDx(0)
-        self.assertTrue(len(dx_result) == 3)
+        self.assertTrue(len(dx_result) == 2)
         self.assertEqual(dx_result[0], dx_expected_0)
         self.assertEqual(dx_result[1], dx_expected_1)
-        self.assertEqual(dx_result[2], dx_expected_2)
 
         # Clean up
         DeleteWorkspace(front)
