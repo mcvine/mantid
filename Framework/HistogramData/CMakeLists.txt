@@ -1,6 +1,4 @@
 set ( SRC_FILES
-	src/BinEdgeStandardDeviations.cpp
-	src/BinEdgeVariances.cpp
 	src/BinEdges.cpp
 	src/Histogram.cpp
 	src/HistogramX.cpp
@@ -10,8 +8,6 @@ set ( SRC_FILES
 )
 
 set ( INC_FILES
-	inc/MantidHistogramData/BinEdgeStandardDeviations.h
-	inc/MantidHistogramData/BinEdgeVariances.h
 	inc/MantidHistogramData/BinEdges.h
 	inc/MantidHistogramData/FixedLengthVector.h
 	inc/MantidHistogramData/Histogram.h
@@ -29,8 +25,6 @@ set ( INC_FILES
 )
 
 set ( TEST_FILES
-	BinEdgeStandardDeviationsTest.h
-	BinEdgeVariancesTest.h
 	BinEdgesTest.h
 	FixedLengthVectorTest.h
 	HistogramDxTest.h
