@@ -167,7 +167,7 @@ void ExtractSpectra::execHistogram() {
       if (hasDx) {
         const auto &oldDx =
             m_inputWorkspace->histogram(i).pointStandardDeviations();
-        outputWorkspace.histogram(j).setPointStandardDeviations(
+        outputWorkspace->histogram(j).setPointStandardDeviations(
             oldDx.cbegin() + m_minX, oldDx.cbegin() + m_maxX - 1);
       }
     } else {

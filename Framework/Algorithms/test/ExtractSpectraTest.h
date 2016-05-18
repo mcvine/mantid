@@ -430,7 +430,7 @@ private:
     // Add the delta x values
     for (size_t j = 0; j < nSpec; ++j) {
       ws->histogram(j).setPointStandardDeviations(nBins);
-      for (size_t k = 0; k <= nBins; ++k) {
+      for (size_t k = 0; k < nBins; ++k) {
         // Add a constant error to all spectra
         ws->histogram(j).mutableDx()[k] = sqrt(double(k));
       }
@@ -635,10 +635,10 @@ private:
         TS_ASSERT_EQUALS(ws.histogram(0).dx()[1], 1.0);
         TS_ASSERT_EQUALS(ws.histogram(0).dx()[2], M_SQRT2);
         TS_ASSERT_EQUALS(ws.histogram(0).dx()[3], sqrt(3.0));
-        // Check that the length of x and dx is the same
+        // Check that the length of x and dx differs by 1
         auto x = ws.readX(0);
         auto dX = ws.histogram(0).dx();
-        TS_ASSERT_EQUALS(x.size(), dX.size());
+        TS_ASSERT_EQUALS(x.size() - 1, dX.size());
 
       } else if (wsType == "event-dx") {
         TS_ASSERT(ws.hasDx(0));
