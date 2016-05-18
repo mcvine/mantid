@@ -86,21 +86,26 @@ public:
   // behavior which always has Dx allocated.
   MantidVec &dataDx() {
     if(!m_dx)
-      m_dx = Kernel::make_cow<HistogramDx>(m_x->size(), 0.0);
+      m_dx = Kernel::make_cow<HistogramDx>(size(), 0.0);
     return m_dx.access().mutableRawData();
   }
   const MantidVec &dataDx() const {
     if(!m_dx)
-      m_dx = Kernel::make_cow<HistogramDx>(m_x->size(), 0.0);
+      m_dx = Kernel::make_cow<HistogramDx>(size(), 0.0);
     return m_dx->rawData();
   }
   const MantidVec &readDx() const {
     if(!m_dx)
-      m_dx = Kernel::make_cow<HistogramDx>(m_x->size(), 0.0);
+      m_dx = Kernel::make_cow<HistogramDx>(size(), 0.0);
     return m_dx->rawData();
   }
 
 private:
+  size_t size() const {
+    if (xMode() == XMode::BinEdges)
+      return m_x->size() - 1;
+    return m_x->size();
+  }
   void checkSize(const Points &points) const;
   void checkSize(const PointVariances &points) const;
   void checkSize(const PointStandardDeviations &points) const;
