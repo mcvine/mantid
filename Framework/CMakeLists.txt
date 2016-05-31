@@ -48,6 +48,8 @@ set ( MANTIDLIBS  ${Boost_LIBRARIES} ${POCO_LIBRARIES} )
 # MPI-enable build setup
 ###########################################################################
 
+        find_package ( OpenGL REQUIRED )
+        find_package ( GSL REQUIRED )
 # Only available on Linux (specifically RedHat), and for a framework-only build
 if ( ${CMAKE_PROJECT_NAME} MATCHES "MantidFramework" AND ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
   set ( MPI_BUILD OFF CACHE BOOL "Enable MPI options" )
