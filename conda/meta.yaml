@@ -11,6 +11,7 @@ requirements:
     - python
     - cmake
     - boost
+    - hdf4
     - hdf5 1.8.15*
     - h5py
     - muparser
